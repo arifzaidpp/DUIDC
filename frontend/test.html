@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrolling Navbar</title>
+  <style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#navbar {
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  transition: top 0.3s ease-in-out;
+}
+
+#navbar.navbar-hidden {
+  top: -70px; /* Adjust this value according to your navbar height */
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+
+.content {
+  padding-top: 70px; /* Adjust this value to prevent content from hiding behind navbar */
+}
+
+  </style>
+</head>
+<body>
+  <header id="navbar">
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="content">
+    <!-- Your content here -->
+    <!-- This is just a placeholder -->
+    <div style="height: 2000px;">Scroll down to see the effect</div>
+  </div>
+
+ <script>
+    let lastScrollTop = 0;
+
+window.addEventListener("scroll", function() {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop) {
+    // scrolling down
+    document.getElementById("navbar").classList.add("navbar-hidden");
+  } else {
+    // scrolling up
+    document.getElementById("navbar").classList.remove("navbar-hidden");
+  }
+  
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
+ </script>
+</body>
+</html>

@@ -1,12 +1,13 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import "./Header.css";
+import "../../js/Header.js"
 
 const Header = () => {
     return (
         <HelmetProvider>
-            <div className="bg-white h-28 items-center pt-2 z-50">
-                <nav className="bg-white border-gray-200 dark:bg-gray-900 items-center">
+            <div className="bg-white h-28 n-main items-center pt-2 z-50">
+                <nav id="nav" className="navbar bg-white border-gray-200 dark:bg-gray-900 items-center">
                     <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                         <a
                             href="/"
@@ -14,7 +15,7 @@ const Header = () => {
                         >
                             <img
                                 src="../main-icon.png"
-                                className="w-64 lg:w-full"
+                                className="w-64 lg:w-full logo"
                                 alt="DUIDC Logo"
                             />
                         </a>
@@ -27,7 +28,7 @@ const Header = () => {
                                 className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1"
                             >
                                 <svg
-                                    className="w-5 h-5"
+                                    className="w-5 h-5 search-icon-btn"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -52,13 +53,10 @@ const Header = () => {
                                         action="/"
                                     >
                                         <label>
-                                            <span className="screen-reader-text">Search for:</span>
                                             <input
                                                 type="search"
                                                 className="search-field"
                                                 placeholder="Search…"
-                                                name="s"
-                                                title="Search for:"
                                             />
                                         </label>
                                         <button type="submit" className="search-submit">
@@ -91,21 +89,7 @@ const Header = () => {
                                 aria-expanded="false"
                             >
                                 <span className="sr-only">Open main menu</span>
-                                <svg
-                                    className="w-5 h-5"
-                                    aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 17 14"
-                                >
-                                    <path
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M1 1h15M1 7h15M1 13h15"
-                                    />
-                                </svg>
+                                <img src="/menu-icon.svg" alt="" />
                             </button>
                         </div>
                         <div
@@ -175,12 +159,12 @@ const Header = () => {
 
                                     <button
                                         id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" 
-                                        class="flex py-2 px-2 w-full text-gray-500 rounded hover:bg-gray-100 lg:hover:bg-transparent head-item lg:p-0"
+                                        className="flex py-2 px-2 w-full text-gray-500 rounded hover:bg-gray-100 lg:hover:bg-transparent head-item lg:p-0"
                                     >
-                                        <div class="link-underline link-underline-black flex">
+                                        <div className="link-underline link-underline-black flex">
                                             Pages{" "}
                                             <svg
-                                                class="w-2.5 h-2.5 ms-3 mt-2"
+                                                className="w-2.5 h-2.5 ms-3 mt-2"
                                                 aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 fill="none"
@@ -188,9 +172,9 @@ const Header = () => {
                                             >
                                                 <path
                                                     stroke="currentColor"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
+                                                     strokeLinecap="round"
+                                                     strokeLinejoin="round"
+                                                    strokeWidth="2"
                                                     d="m1 1 4 4 4-4"
                                                 />
                                             </svg>
@@ -198,16 +182,16 @@ const Header = () => {
                                     </button>
                                     <div
                                         id="dropdownNavbar"
-                                        class="z-50 hidden ease-in-out font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                                        className="z-50 hidden ease-in-out font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
                                     >
                                         <ul
-                                            class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                            className="py-2 text-sm text-gray-700 dark:text-gray-200"
                                             aria-labelledby="dropdownHoverButton"
                                         >
                                             <li>
                                                 <a
                                                     href="#"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 >
                                                     About
                                                 </a>
@@ -215,7 +199,7 @@ const Header = () => {
                                             <li>
                                                 <a
                                                     href="#"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 >
                                                     Contact
                                                 </a>
@@ -223,7 +207,7 @@ const Header = () => {
                                             <li>
                                                 <a
                                                     href="#"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 >
                                                     Campus Life
                                                 </a>
@@ -231,7 +215,7 @@ const Header = () => {
                                             <li>
                                                 <a
                                                     href="#"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 >
                                                     Library
                                                 </a>
@@ -239,7 +223,7 @@ const Header = () => {
                                             <li>
                                                 <a
                                                     href="#"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 >
                                                     Careers
                                                 </a>
@@ -247,7 +231,7 @@ const Header = () => {
                                             <li>
                                                 <a
                                                     href="#"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 >
                                                     Donate
                                                 </a>
@@ -255,7 +239,7 @@ const Header = () => {
                                             <li>
                                                 <a
                                                     href="#"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 >
                                                     Blog
                                                 </a>
@@ -263,7 +247,7 @@ const Header = () => {
                                             <li>
                                                 <a
                                                     href="#"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 >
                                                     Events
                                                 </a>
@@ -339,6 +323,10 @@ const Header = () => {
                         </div>
                     </div>
                 </nav>
+
+
+
+                
             </div>
             <Helmet>
                 <script src="https://flowbite.com/docs/flowbite.min.js"></script>

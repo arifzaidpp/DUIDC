@@ -4,7 +4,7 @@ import "./HeaderBottom.css";
 const HeaderBottom = () => {
     return (
         <nav
-            className="hidden lg:block dark:bg-gray-900 items-center text-center content-center  w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
+            className="navBot hidden lg:block dark:bg-gray-900 items-center text-center content-center  w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
             style={{ backgroundColor: "#9d2235" }}
         >
             <div className="max-w-fit text-center content-center items-center p-3 inline-flex">
@@ -54,12 +54,12 @@ const HeaderBottom = () => {
 
                             <button
                                 id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
-                                class="flex items-center justify-between w-full py-2 px-4 text-white head-items rounded md:p-0 md:w-auto"
+                                className="flex items-center justify-between w-full py-2 px-4 text-white head-items rounded md:p-0 md:w-auto"
                             >
-                                <div class="link-underline link-underline-black flex">
+                                <div className="link-underline link-underline-black flex">
                                     Pages{" "}
                                     <svg
-                                        class="w-2.5 h-2.5 ms-3 mt-2.5"
+                                        className="w-2.5 h-2.5 ms-3 mt-2.5"
                                         aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -67,9 +67,9 @@ const HeaderBottom = () => {
                                     >
                                         <path
                                             stroke="currentColor"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                             strokeLinecap="round"
+                                             strokeLinejoin="round"
+                                            strokeWidth="2"
                                             d="m1 1 4 4 4-4"
                                         />
                                     </svg>
@@ -77,16 +77,16 @@ const HeaderBottom = () => {
                             </button>
                             <div
                                 id="dropdownHover"
-                                class="z-50 hidden ease-in-out font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                                className="z-50 hidden ease-in-out font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
                             >
                                 <ul
-                                    class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                    className="py-2 text-sm text-gray-700 dark:text-gray-200"
                                     aria-labelledby="dropdownHoverButton"
                                 >
                                     <li>
                                         <a
                                             href="#"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             About
                                         </a>
@@ -94,7 +94,7 @@ const HeaderBottom = () => {
                                     <li>
                                         <a
                                             href="#"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Contact
                                         </a>
@@ -102,7 +102,7 @@ const HeaderBottom = () => {
                                     <li>
                                         <a
                                             href="#"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Campus Life
                                         </a>
@@ -110,7 +110,7 @@ const HeaderBottom = () => {
                                     <li>
                                         <a
                                             href="#"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Library
                                         </a>
@@ -118,7 +118,7 @@ const HeaderBottom = () => {
                                     <li>
                                         <a
                                             href="#"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Careers
                                         </a>
@@ -126,7 +126,7 @@ const HeaderBottom = () => {
                                     <li>
                                         <a
                                             href="#"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Donate
                                         </a>
@@ -134,7 +134,7 @@ const HeaderBottom = () => {
                                     <li>
                                         <a
                                             href="#"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Blog
                                         </a>
@@ -142,7 +142,7 @@ const HeaderBottom = () => {
                                     <li>
                                         <a
                                             href="#"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Events
                                         </a>
