@@ -72,12 +72,11 @@ box-shadow: none; /* Optional: Remove any box shadow */
   --swiper-navigation-size: 44px;
   pointer-events: auto;
   margin: 0;
-  margin-right: 4rem;
   font: inherit;
   line-height: normal;
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   box-sizing: inherit;
-  width: 100%;
+  width: 20rem;
   padding: 3px 3px;
   outline: none !important;
   border-radius: 0;
