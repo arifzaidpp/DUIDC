@@ -7,11 +7,6 @@ const Home = () => {
         <>
             <Navbar />
             <Banner/>
-            <Banner/>
-            <Banner/>
-            <Banner/>
-            <Banner/>
-            <Banner/>
             <div id="page-content" className="page-content">
                 <div className="container">
                     <div className="row">

@@ -1,11 +1,225 @@
-@media (min-width: 1024px) {
-    .banner {
-        height: 45rem/* 384px */ !important;
+.banner {
+  background-color: #111111;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.788),
+      rgba(255, 255, 255, 0)
+    ),
+    url(1.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner {
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  padding: 253px 0px 211px 0px;
+}
+
+
+@font-face {
+    font-family: 'Baskerville-Serial-ExtraBold';
+    src: 
+         url('/Baskerville-Serial-ExtraBold Regular/Baskerville-Serial-ExtraBold Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+} 
+
+@font-face {
+    font-family: 'Butler';
+    src: url('Butler-UltraLight.woff2') format('woff2'),
+        url('Butler-UltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Butler';
+    src: url('Butler-Medium.woff2') format('woff2'),
+        url('Butler-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Butler';
+    src: url('Butler-Light.woff2') format('woff2'),
+        url('Butler-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Butler';
+    src: url('Butler-Black.woff2') format('woff2'),
+        url('Butler-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Butler';
+    src: url('Butler-Bold.woff2') format('woff2'),
+        url('Butler-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Butler';
+    src: url('Butler-ExtraBold.woff2') format('woff2'),
+        url('Butler-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Butler';
+    src: url('Butler.woff2') format('woff2'),
+        url('Butler.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+.hero-text {
+  padding-left: 35px;
+  padding-right: 35px;
+  max-width: 1510px;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+
+  font-size: 72px;
+  line-height: 1.2em;
+  color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+    .hero-text h1 {
+        font-size: 54px;
     }
 }
 
-@media (min-width: 720px) {
-    .banner {
-        height: 25rem/* 384px */;
+@media (min-width: 1024px) {
+    .hero-text h1 {       
+        font-size: 72px;
     }
+}
+
+@media (max-width: 767px) {
+    .hero-text h1 {
+        font-size: 36px;
+    }
+}
+
+.hero-text h1 {
+    font-family: 'Butler', 'Baskerville-Serial-ExtraBold';
+    line-height: 1.2em;
+    max-width: 670px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+}
+
+.hero-text mark{
+    color: #fff;
+    border-bottom: 3px solid currentColor;
+    background: none;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 767px) {
+    .hero-text {
+        text-align: center;
+    }
+    .hero-btns{
+        justify-content: center;
+    }
+    .banner{
+        padding: 120px 0px 60px 0px;
+
+    }
+}
+
+@media (max-width: 467px) {
+    .btn-group-vertical{
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 100%; /* Set a width if needed */
+  justify-self: center;
+  display: grid; /* Make the buttons appear below each other */
+    }
+    .red{
+        margin-bottom: 20px;
+    }
+    .white{
+        margin-right: 25px;
+    }
+}
+
+.hero-btns{
+ padding-top: 40px;
+  padding-left: 35px;
+  padding-right: 35px;
+  max-width: 1510px;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+
+.hero-btns .red{
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0em;
+    padding: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-transform: none;
+    background-color: #ae152d !important;
+}
+
+.hero-btns .red:hover{
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0em;
+    padding: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-transform: none;
+    background-color: #111111 !important;
+}
+
+.hero-btns .white{
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0em;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-transform: none;
+    margin-left: 1rem;
+    color: #ae152d;
+    background-color: #ffffff !important;
+}
+
+.hero-btns .white:hover{
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 900;
+    margin-left: 1rem;
+    letter-spacing: 0em;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: #fff;
+    text-transform: none;
+    background-color: #111111 !important;
 }

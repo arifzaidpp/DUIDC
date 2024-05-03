@@ -254,6 +254,10 @@ color: #ae152d;
   transition: all 0.9s ease-out ;
 } */
 
+.max-w-screen-xl-my {
+  max-width: 1450px !important;
+}
+
 .navbar.fixed-top {
   position: fixed ;
   top: 0 ;
@@ -276,7 +280,7 @@ max-width: 10rem;
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 1024px) {
   .logo{
     max-width: 13rem;
   }
