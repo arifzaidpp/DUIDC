@@ -28,7 +28,7 @@ const HeaderBottom = () => {
                                 className="block  px-4 text-white head-items rounded md:bg-transparent md:text-white"
                             >
                                 <div className="link-underline link-underline-black">
-                                    Academics
+                                Department
                                 </div>
                             </a>
                         </li>
@@ -38,7 +38,7 @@ const HeaderBottom = () => {
                                 className="block  px-4 text-white head-items rounded md:bg-transparent md:text-white"
                             >
                                 <div className="link-underline link-underline-black">
-                                    Admissions
+                                    Admission
                                 </div>
                             </a>
                         </li>
@@ -47,7 +47,7 @@ const HeaderBottom = () => {
                                 href="#"
                                 className="block px-4 text-white head-items rounded md:bg-transparent md:text-white"
                             >
-                                <div className="link-underline link-underline-black">News </div>
+                                <div className="link-underline link-underline-black">Blogs </div>
                             </a>
                         </li>
                         <li>
@@ -59,7 +59,7 @@ const HeaderBottom = () => {
                                 <div className="link-underline link-underline-black flex">
                                     Pages{" "}
                                     <svg
-                                        className="w-2.5 h-2.5 ms-3 mt-2.5"
+                                        className="w-2.5 h-2.5 ms-2 mt-2"
                                         aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -112,31 +112,7 @@ const HeaderBottom = () => {
                                             href="#"
                                             className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
-                                            Library
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="#"
-                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        >
-                                            Careers
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="#"
-                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        >
                                             Donate
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="#"
-                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        >
-                                            Blog
                                         </a>
                                     </li>
                                     <li>
