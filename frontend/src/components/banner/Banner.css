@@ -20,61 +20,61 @@
 @font-face {
     font-family: 'Baskerville-Serial-ExtraBold';
     src: 
-         url('/Baskerville-Serial-ExtraBold Regular/Baskerville-Serial-ExtraBold Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+         url('/Fonts/Baskerville-Serial-ExtraBold Regular/Baskerville-Serial-ExtraBold Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 } 
 
 @font-face {
     font-family: 'Butler';
-    src: url('Butler-UltraLight.woff2') format('woff2'),
-        url('Butler-UltraLight.woff') format('woff');
+    src: url('/Fonts/Butler-UltraLight.woff2') format('woff2'),
+        url('/Fonts/Butler-UltraLight.woff') format('woff');
     font-weight: 200;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Butler';
-    src: url('Butler-Medium.woff2') format('woff2'),
-        url('Butler-Medium.woff') format('woff');
+    src: url('/Fonts/Butler-Medium.woff2') format('woff2'),
+        url('/Fonts/Butler-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Butler';
-    src: url('Butler-Light.woff2') format('woff2'),
-        url('Butler-Light.woff') format('woff');
+    src: url('/Fonts/Butler-Light.woff2') format('woff2'),
+        url('/Fonts/Butler-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Butler';
-    src: url('Butler-Black.woff2') format('woff2'),
-        url('Butler-Black.woff') format('woff');
+    src: url('/Fonts/Butler-Black.woff2') format('woff2'),
+        url('/Fonts/Butler-Black.woff') format('woff');
     font-weight: 900;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Butler';
-    src: url('Butler-Bold.woff2') format('woff2'),
-        url('Butler-Bold.woff') format('woff');
+    src: url('/Fonts/Butler-Bold.woff2') format('woff2'),
+        url('/Fonts/Butler-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Butler';
-    src: url('Butler-ExtraBold.woff2') format('woff2'),
-        url('Butler-ExtraBold.woff') format('woff');
+    src: url('/Fonts/Butler-ExtraBold.woff2') format('woff2'),
+        url('/Fonts/Butler-ExtraBold.woff') format('woff');
     font-weight: 800;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Butler';
-    src: url('Butler.woff2') format('woff2'),
-        url('Butler.woff') format('woff');
+    src: url('/Fonts/Butler.woff2') format('woff2'),
+        url('/Fonts/Butler.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -113,6 +113,16 @@
         font-size: 36px;
     }
 }
+
+
+  .fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(4vh);
+    visibility: visible;
+    transition: opacity 0.4s ease-out, transform 900ms ease-out;
+    will-change: opacity, visibility;
+  }
+
 
 .hero-text h1 {
     font-family: 'Butler', 'Baskerville-Serial-ExtraBold';

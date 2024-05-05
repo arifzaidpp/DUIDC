@@ -6,7 +6,7 @@ import "../../js/Header.js";
 const Header = () => {
   return (
     <HelmetProvider>
-      <div className="bg-white h-28 n-main items-center pt-2 z-50">
+      <div className="bg-white h-28 n-main items-center z-50">
         <nav
           id="nav"
           className="navbar bg-white border-gray-200 dark:bg-gray-900 items-center"
@@ -18,7 +18,7 @@ const Header = () => {
             >
               <img
                 src="../main-icon.png"
-                className="w-64 lg:w-full logo"
+                className="w-72 lg:w-full logo"
                 alt="DUIDC Logo"
               />
             </a>

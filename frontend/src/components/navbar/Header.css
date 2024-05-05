@@ -3,6 +3,9 @@
       --tw-text-opacity: 1;
       color: rgb(200 30 30 / var(--tw-text-opacity)) !important;
   }
+  .n-main{
+      padding-top: 0.5rem/* 8px */;
+  }
 }
 
 
@@ -268,7 +271,7 @@ color: #ae152d;
 }
 
 .logo.fixed-top {
-max-width: 10rem;
+max-width: 14rem;
 }
 
 @media (max-width: 768px) {

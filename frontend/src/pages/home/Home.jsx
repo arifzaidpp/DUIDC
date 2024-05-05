@@ -1,12 +1,14 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Banner from "../../components/banner/Banner";
+import AboutBanner from "../../components/aboutBanner/AboutBanner";
 
 const Home = () => {
     return (
         <>
             <Navbar />
             <Banner/>
+            <AboutBanner/>
             <div id="page-content" className="page-content">
                 <div className="container">
                     <div className="row">
