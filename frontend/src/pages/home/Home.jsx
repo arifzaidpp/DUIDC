@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Banner from "../../components/banner/Banner";
 import AboutBanner from "../../components/aboutBanner/AboutBanner";
+import Admission from "../../components/admission/Admission";
 
 const Home = () => {
     return (
@@ -9,7 +10,8 @@ const Home = () => {
             <Navbar />
             <Banner/>
             <AboutBanner/>
-            <div id="page-content" className="page-content">
+            <Admission/>
+            {/* <div id="page-content" className="page-content">
                 <div className="container">
                     <div className="row">
 
@@ -37,7 +39,7 @@ const Home = () => {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 };

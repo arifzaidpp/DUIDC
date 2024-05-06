@@ -32,7 +32,7 @@ function AboutBanner() {
                   <p>
                     At the heart of all we do is a shared intellectual curiosity
                     and a common commitment to academic excellence. But UniCamp
-                    is also known for its warm and energetic sense of community.{" "}
+                    is also known for its warm and energetic sense of community.
                   </p>
                   <p>
                     UniCamp is as varied in its people as it is in the

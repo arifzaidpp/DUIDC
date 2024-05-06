@@ -185,7 +185,7 @@
 .hero-btns .red{
     font-family: inherit;
     font-size: 16px;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: 0em;
     padding: 1rem;
     padding-left: 1.5rem;
@@ -197,7 +197,7 @@
 .hero-btns .red:hover{
     font-family: inherit;
     font-size: 16px;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: 0em;
     padding: 1rem;
     padding-left: 1.5rem;
@@ -208,8 +208,8 @@
 
 .hero-btns .white{
     font-family: inherit;
-    font-size: 14px;
-    font-weight: 900;
+    font-size: 16px;
+    font-weight: 700;
     letter-spacing: 0em;
     padding: 1rem;
     padding-left: 2rem;
@@ -222,8 +222,8 @@
 
 .hero-btns .white:hover{
     font-family: inherit;
-    font-size: 14px;
-    font-weight: 900;
+    font-size: 16px;
+    font-weight: 700;
     margin-left: 1rem;
     letter-spacing: 0em;
     padding: 1rem;
