@@ -1,6 +1,8 @@
 import React from "react";
 import "./AboutBanner.css";
 import "../../js/animation";
+import WhyDuidc from "./WhyDuidc";
+import Students from "./Students";
 
 function AboutBanner() {
   const [isVisible, setVisible] = React.useState(true);
@@ -45,26 +47,8 @@ function AboutBanner() {
               </div>
             </div>
             <div className=" a-right grid grid-rows-2 grid-flow-col gap-7">
-              <div className="college relative hover:border-gray-700 border-transparent border-3 overflow-hidden bg-cover bg-no-repeat">
-                <img
-                  className="transition duration-900 ease-in-out object-fill hover:scale-110"
-                  src="/1.jpg"
-                  alt=""
-                />
-                <div className="box-caption">
-                  <h3 className="title"> Why DUIDC?</h3>
-                </div>
-              </div>
-              <div className="highlight-students relative hover:border-gray-700 border-transparent border-3 overflow-hidden bg-cover bg-no-repeat">
-                <img
-                  className="transition duration-900 ease-in-out object-fill hover:scale-110"
-                  src="/2.jpg"
-                  alt=""
-                />
-                <div className="box-caption">
-                  <h3 className="title"> Meet Our Students</h3>
-                </div>
-              </div>
+              <WhyDuidc/>
+              <Students/>
             </div>
           </div>
         </div>
