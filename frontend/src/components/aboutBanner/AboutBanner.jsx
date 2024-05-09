@@ -1,6 +1,5 @@
 import React from "react";
 import "./AboutBanner.css";
-import "../../js/animation";
 import WhyDuidc from "./WhyDuidc";
 import Students from "./Students";
 
