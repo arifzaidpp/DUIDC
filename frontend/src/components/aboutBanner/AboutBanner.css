@@ -52,7 +52,7 @@
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     .l\:text-3xl {
         font-size: 1.875rem/* 30px */ !important;
         line-height: 2.25rem/* 36px */ !important;
@@ -98,7 +98,7 @@
 }
 
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     .description-wrap p {
         font-size: 16px;
     }
@@ -130,7 +130,7 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1023px) {
     .a-b{
         margin: 1.5rem;
     }

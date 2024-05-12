@@ -1,4 +1,4 @@
-@media (min-width: 1024px) {
+@media (min-width: 1023px) {
   .head-item:hover {
       --tw-text-opacity: 1;
       color: rgb(200 30 30 / var(--tw-text-opacity)) !important;
@@ -283,7 +283,7 @@ max-width: 14rem;
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .logo{
     max-width: 13rem;
   }

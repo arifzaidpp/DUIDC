@@ -27,7 +27,7 @@
   visibility: visible;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .ad-description-wrap p {
     font-size: 16px;
   }

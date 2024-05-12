@@ -35,7 +35,7 @@ const HeaderBottom = () => {
                         <li>
                             <a
                                 href="#"
-                                className="block  px-4 text-white head-items rounded md:bg-transparent md:text-white"
+                                className="block text-white head-items rounded md:bg-transparent md:text-white"
                             >
                                 <div className="link-underline link-underline-black">
                                     Admission

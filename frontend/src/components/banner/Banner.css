@@ -96,13 +96,13 @@
   color: #ffffff;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     .hero-text h1 {
         font-size: 54px;
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1023px) {
     .hero-text h1 {       
         font-size: 72px;
     }

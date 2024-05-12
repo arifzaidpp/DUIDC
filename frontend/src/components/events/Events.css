@@ -1,0 +1,163 @@
+.ev-heading-divider {
+  margin-top: 10px;
+  font-size: 0;
+  line-height: 1;
+}
+
+.ev-heading-divider:before {
+  display: inline-block;
+  content: "";
+  width: 66px;
+  height: 3px;
+  background: #ae152d;
+}
+
+.ev-data {
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+.ev-heading {
+  font-weight: 700;
+  font-family: "Butler", "Baskerville-Serial-ExtraBold";
+}
+
+.ev-body {
+  padding: 40px;
+}
+
+.ev-item-img {
+  padding: 0px;
+  max-height: 480px;
+  height: 100%;
+}
+
+.ev-item-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.ev-body .first {
+  height: 480px;
+  max-width: 43rem !important;
+  overflow: hidden;
+}
+
+.ev-body .first a{
+  left: 0;
+  max-width: 43rem;
+}
+
+@media (max-width: 1280px) {
+  .container {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .container {
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 640px) {
+  .container {
+    max-width: 100% !important;
+  }
+}
+
+.event-start-date {
+  margin: 0 0 25px;
+}
+
+.event-start-date span {
+  display: inline-block;
+  background: #ae152d;
+  color: #fff;
+  line-height: 26px;
+  padding: 3px 15px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.event-title {
+  font-size: 30px;
+  line-height: 1.47;
+  min-height: 0;
+  margin-bottom: 15px;
+  color: #fff;
+  font-family: Butler;
+  font-weight: 500;
+  letter-spacing: 0em;
+}
+
+.event-meta {
+  margin: 20px 0 0;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.event-meta {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  line-height: 26px;
+
+  margin: 0 -11px;
+}
+
+.event-meta .meta-item {
+  margin: 6px 0 0;
+}
+
+.event-time {
+  font-size: 15px;
+  text-transform: uppercase;
+  line-height: 26px;
+  margin: 26px 0 0;
+
+  font-family: Gordita;
+  font-weight: 400;
+  letter-spacing: 0em;
+}
+
+.img-gradient img{
+  width: 100%;
+  height: 100%;
+}
+
+.img-gradient {
+  max-width: 100%; 
+  width: 800px;
+  margin: auto;
+}
+
+.img-gradient::after {
+  display: block;
+  position: relative;
+  background-image: linear-gradient(to top, #000000 0, rgba(255, 255, 255, 0) 80%);
+  height: 480px;
+  width: 100%;
+  content: '';
+}
+
+
+.ev-text-btm{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+}
