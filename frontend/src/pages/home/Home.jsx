@@ -5,6 +5,7 @@ import AboutBanner from "../../components/aboutBanner/AboutBanner";
 import Admission from "../../components/admission/Admission";
 import News from "../../components/news/News";
 import Events from "../../components/events/Events";
+import Footer from "../../components/footer/Footer";
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <Admission/>
             <News/>
             <Events/>
+            <Footer/>
             {/* <div id="page-content" className="page-content">
                 <div className="container">
                     <div className="row">

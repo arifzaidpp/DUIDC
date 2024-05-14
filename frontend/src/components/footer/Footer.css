@@ -1,0 +1,161 @@
+.foot-p {
+  max-width: 35rem;
+  padding-top: 1.5rem;
+  color: #ababab;
+}
+
+.foot-footer {
+  background-color: #0000;
+  background-image: url(https://unicamp.thememove.com/main/wp-content/uploads/sites/2/2021/04/footer-02-bg.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.foot-h3 {
+  font-family: Butler;
+  font-weight: 800;
+  font-size: large;
+  letter-spacing: 0em;
+  color: aliceblue;
+}
+
+.foot-sub-p {
+  color: #ababab;
+  font-size: 14.8px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.ft-foot{
+  margin-top: 3.5rem;
+}
+
+.foot-hr {
+  border-color: rgb(229 231 235 / 38%) !important;
+}
+
+.foot-icons {
+  color: rgb(203 205 207) !important;
+}
+
+.ft-hero-btns .ev-red {
+  font-family: Gordita;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0em;
+  padding: 1rem;
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  text-transform: none;
+  background-color: #ae152d !important;
+}
+
+.ft-hero-btns .ev-red:hover {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0em;
+  padding: 1rem;
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  text-transform: none;
+  background-color: #111111 !important;
+}
+
+.ft-head-title {
+  width: 100%;
+  max-width: 22rem;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ft-head-title h3 {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.47em;
+  color: #ffffff;
+  font-family: Butler;
+  letter-spacing: 0em;
+}
+
+.ft-input {
+  font-weight: 400;
+  color: #ffffff;
+  background-color: #353535;
+  border-color: #353535;
+
+  width: 100%;
+  padding: 3px 15px;
+  min-height: 52px;
+  outline: none;
+  border-radius: 0;
+
+  height: 1px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 0px solid #f5f5f5;
+}
+
+.ft-input-sub {
+  max-width: 758px;
+  width: 100%;
+  justify-self: center;
+  margin-bottom: 1.5rem;
+}
+
+.ft-in {
+  width: 100%;
+  max-width: 558px;
+  float: left;
+}
+
+.ft-hero-btns {
+  position: relative;
+  max-width: 200px;
+  float: right;
+  width: 100%;
+}
+
+.ft-button-icon {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0em;
+  margin-left: 14px;
+}
+
+@media (max-width: 798px) {
+  .ft-in {
+    width: 68%;
+  }
+  .ft-hero-btns {
+    width: 32%;
+    max-width: none;
+  }
+}
+@media (max-width: 640px) {
+  .container {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 508px) {
+  .ft-hero-btns {
+    width: 15% !important;
+  }
+  .ft-in {
+    width: 85%;
+  }
+  .ft-button-icon {
+    margin-left: auto;
+  }
+  .sub-txt {
+    display: none;
+  }
+}
