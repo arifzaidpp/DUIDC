@@ -15,7 +15,7 @@ const HeaderBottom = () => {
                     <ul className="flex p-0 mt-0 font-medium items-center border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse flex-row md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
                             <a
-                                href="#"
+                                href="/"
                                 className="block  px-4 text-white head-items rounded md:bg-transparent md:text-white md:p-0 md:dark:text-blue-500"
                                 aria-current="page"
                             >
@@ -24,7 +24,7 @@ const HeaderBottom = () => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href="/department"
                                 className="block  px-4 text-white head-items rounded md:bg-transparent md:text-white"
                             >
                                 <div className="link-underline link-underline-black">
@@ -34,7 +34,7 @@ const HeaderBottom = () => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href="https://dhiu.in/secondary-1.html"
                                 className="block text-white head-items rounded md:bg-transparent md:text-white"
                             >
                                 <div className="link-underline link-underline-black">
@@ -44,7 +44,7 @@ const HeaderBottom = () => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href="/blogs"
                                 className="block px-4 text-white head-items rounded md:bg-transparent md:text-white"
                             >
                                 <div className="link-underline link-underline-black">Blogs </div>
@@ -85,7 +85,7 @@ const HeaderBottom = () => {
                                 >
                                     <li>
                                         <a
-                                            href="#"
+                                            href="/about"
                                             className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             About
@@ -93,18 +93,10 @@ const HeaderBottom = () => {
                                     </li>
                                     <li>
                                         <a
-                                            href="#"
+                                            href="/contact"
                                             className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Contact
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="#"
-                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        >
-                                            Campus Life
                                         </a>
                                     </li>
                                     <li>
@@ -117,7 +109,7 @@ const HeaderBottom = () => {
                                     </li>
                                     <li>
                                         <a
-                                            href="#"
+                                            href="/events"
                                             className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Events

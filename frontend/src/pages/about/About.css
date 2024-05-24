@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap");
+/*===========================
+  COMMON css 
+===========================*/
+:root {
+  --font-family: "Inter", sans-serif;
+  --primary: #155bd5;
+  --primary-dark: #1c3ab6;
+  --primary-light: #e2f1ff;
+  --accent: #00d4d7;
+  --accent-dark: #00bac1;
+  --accent-light: #dff9f8;
+  --success: #13d527;
+  --success-dark: #00ae11;
+  --success-light: #eafbe7;
+  --secondary: #8f15d5;
+  --secondary-dark: #6013c7;
+  --secondary-light: #f4e5fa;
+  --info: #15b2d5;
+  --info-dark: #0f8ca8;
+  --info-light: #e0f5fa;
+  --caution: #dbbb25;
+  --caution-dark: #d58f15;
+  --caution-light: #fbf9e4;
+  --error: #e6185e;
+  --error-dark: #bf1257;
+  --error-light: #fce4eb;
+  --black: #1d1d1d;
+  --dark-1: #2d2d2d;
+  --dark-2: #4d4d4d;
+  --dark-3: #6d6d6d;
+  --gray-1: #8d8d8d;
+  --gray-2: #adadad;
+  --gray-3: #cdcdcd;
+  --gray-4: #e0e0e0;
+  --light-1: #efefef;
+  --light-2: #f5f5f5;
+  --light-3: #fafafa;
+  --white: #ffffff;
+  --gradient-1: linear-gradient(180deg, #155bd5 0%, #1c3ab6 100%);
+  --gradient-2: linear-gradient(180deg, #155bd5 13.02%, #00d4d7 85.42%);
+  --gradient-3: linear-gradient(180deg, #155bd5 0%, #8f15d5 100%);
+  --gradient-4: linear-gradient(180deg, #155bd5 0%, #13d527 100%);
+  --gradient-5: linear-gradient(180deg, #155bd5 0%, #15bbd5 100%);
+  --gradient-6: linear-gradient(180deg, #155bd5 0%, #dbbb25 100%);
+  --gradient-7: linear-gradient(180deg, #155bd5 0%, #e6185e 100%);
+  --gradient-8: linear-gradient(180deg, #1c3ab6 0%, #00bac1 100%);
+  --gradient-9: linear-gradient(180deg, #00d4d7 13.02%, #155bd5 85.42%);
+  --shadow-1: 0px 0px 1px rgba(40, 41, 61, 0.08),
+    0px 0.5px 2px rgba(96, 97, 112, 0.16);
+  --shadow-2: 0px 0px 1px rgba(40, 41, 61, 0.04),
+    0px 2px 4px rgba(96, 97, 112, 0.16);
+  --shadow-3: 0px 0px 2px rgba(40, 41, 61, 0.04),
+    0px 4px 8px rgba(96, 97, 112, 0.16);
+  --shadow-4: 0px 2px 4px rgba(40, 41, 61, 0.04),
+    0px 8px 16px rgba(96, 97, 112, 0.16);
+  --shadow-5: 0px 2px 8px rgba(40, 41, 61, 0.04),
+    0px 16px 24px rgba(96, 97, 112, 0.16);
+  --shadow-6: 0px 2px 8px rgba(40, 41, 61, 0.08),
+    0px 20px 32px rgba(96, 97, 112, 0.24);
+}
+
+/*===========================
+  about-05 css
+===========================*/
+.about-five {
+  background-color: var(--light-3);
+  padding-top: 120px;
+  padding-bottom: 90px;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .about-five {
+    padding-top: 100px;
+    padding-bottom:70px;
+  }
+}
+@media (max-width: 767px) {
+  .about-five {
+    padding-top: 80px;
+    padding-bottom:60px;
+  }
+}
+.about-five-content{
+  padding-left: 50px;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .about-five-content {
+    padding-left: 0;
+  }
+}
+@media (max-width: 767px) {
+  .about-five-content {
+    padding-left: 0;
+  }
+}
+.about-five-content .small-title {
+  position: relative;
+  padding-left: 30px;
+}
+.about-five-content .small-title::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  background-color: var(--primary);
+  height: 2px;
+  width: 20px;
+  margin-top: -1px;
+}
+.about-five-content .main-title {
+  margin-top: 20px;
+}
+.about-five-content .about-five-tab {
+  margin-top: 40px;
+}
+.about-five-content .about-five-tab nav {
+  border: none;
+  background-color: var(--light-1);
+  padding: 15px;
+  border-radius: 5px;
+}
+.about-five-content .about-five-tab nav .nav-tabs {
+  border: none;
+}
+.about-five-content .about-five-tab nav button {
+  border: none;
+  color: var(--dark-1);
+  font-weight: 600;
+  padding: 0;
+  margin-right: 20px;
+  position: relative;
+  background-color: var(--white);
+  padding: 10px 18px;
+  border-radius: 4px;
+  text-transform: capitalize;
+}
+@media (max-width: 767px) {
+  .about-five-content .about-five-tab nav button {
+    margin: 0;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .about-five-content .about-five-tab nav button:last-child {
+    margin: 0;
+  }
+}
+.about-five-content .about-five-tab nav button:hover {
+  color: var(--primary);
+}
+.about-five-content .about-five-tab nav button.active {
+  background-color: var(--primary);
+  color: var(--white);
+}
+.about-five-content .about-five-tab nav button:last-child {
+  margin-right: 0;
+}
+.about-five-content .about-five-tab .tab-content {
+  border: none;
+  padding-top: 30px;
+}
+.about-five-content .about-five-tab .tab-content p {
+  margin-bottom: 20px;
+}
+.about-five-content .about-five-tab .tab-content p:last-child {
+  margin: 0;
+}
+
+.about-image-five {
+  padding-left: 60px;
+  position: relative;
+  z-index: 2;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .about-image-five {
+    margin-bottom: 70px;
+    padding-left: 30px;
+  }
+}
+@media (max-width: 767px) {
+  .about-image-five {
+    margin-bottom: 60px;
+    padding-left: 0;
+  }
+}
+.about-image-five .shape {
+  position: absolute;
+  left: 30px;
+  top: -30px;
+  z-index: -1;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .about-image-five .shape {
+    left: 0;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .about-image-five::before {
+    right: -15px;
+    bottom: -15px;
+  }
+}
+@media (max-width: 767px) {
+  .about-image-five::before {
+    display: none;
+  }
+}
+.about-image-five img {
+  width: 100%;
+  z-index: 2;
+}
+

@@ -1,0 +1,12 @@
+.mb-16{
+    margin-bottom: 4rem; /* 64px */
+}
+
+.g-bg-red-700:hover{
+    background-color: rgb(185 28 28) !important;
+}
+
+.px-7{
+    padding-left: 1.75rem; /* 28px */
+    padding-right: 1.75rem; /* 28px */
+}

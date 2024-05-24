@@ -1,0 +1,13 @@
+.c-form div input ,.c-form div textarea{
+    border-color: #E5E7EB !important;
+}
+
+.bg-\[\#a91079\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(157, 34, 53) !important;
+}
+
+.bg-\[\#2e0249\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(38 38 38 / 78%) !important;
+}

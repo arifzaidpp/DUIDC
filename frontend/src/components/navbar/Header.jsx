@@ -18,7 +18,7 @@ const Header = () => {
             >
               <img
                 src="../main-icon.png"
-                className="w-72 lg:w-full logo"
+                className="w-72 logo"
                 alt="DUIDC Logo"
               />
             </a>
@@ -139,7 +139,7 @@ const Header = () => {
                 <ul className="space-y-2 font-medium">
                   <li>
                     <a
-                      href="#"
+                      href="/"
                       className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <svg
@@ -156,7 +156,7 @@ const Header = () => {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="/department"
                       className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-100 group"
                     >
                       <svg
@@ -178,7 +178,8 @@ const Header = () => {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="https://dhiu.in/secondary-1.html 
+                      "
                       className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <svg
@@ -200,7 +201,7 @@ const Header = () => {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="/blogs"
                       className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <svg
@@ -220,7 +221,7 @@ const Header = () => {
 
                   <li>
                     <a
-                      href="#"
+                      href="/commitee"
                       className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <svg
@@ -237,7 +238,7 @@ const Header = () => {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="/staffs"
                       className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-100 group"
                     >
                       <img className=" c-w " src="/teachers.svg" alt="" />
@@ -251,7 +252,7 @@ const Header = () => {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="/ihsas"
                       className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       {/* <svg
@@ -689,7 +690,7 @@ const Header = () => {
 
 
                       <span className="flex-1 ms-3 whitespace-nowrap">
-                        Alumni
+                        Ihsas
                       </span>
                       {/* <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                                                 3
@@ -698,7 +699,7 @@ const Header = () => {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="/gallery"
                       className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <svg
@@ -769,7 +770,7 @@ const Header = () => {
                     >
                       <li>
                         <a
-                          href="#"
+                          href="/about"
                           className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           About
@@ -777,18 +778,10 @@ const Header = () => {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="/contact"
                           className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Contact
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Campus Life
                         </a>
                       </li>
                       <li>
@@ -801,7 +794,7 @@ const Header = () => {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="/events"
                           className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Events
@@ -952,7 +945,7 @@ const Header = () => {
               <ul className="flex flex-col p-4 lg:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-white dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700">
                 <li>
                   <a
-                    href="#"
+                    href="/committee"
                     className="block py-2 px-2 text-gray-500 rounded hover:bg-gray-100 lg:hover:bg-transparent head-item lg:p-0"
                     aria-current="page"
                   >
@@ -961,7 +954,7 @@ const Header = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/staffs"
                     className="block py-2 px-2 text-gray-500 rounded hover:bg-gray-100 lg:hover:bg-transparent head-item lg:p-0"
                   >
                     STAFFS
@@ -969,15 +962,15 @@ const Header = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/ihsas"
                     className="block py-2 px-2 text-gray-500 rounded hover:bg-gray-100 lg:hover:bg-transparent head-item lg:p-0"
                   >
-                    ALUMNI
+                    IHSAS
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/gallery"
                     className="block py-2 px-2 text-gray-500 rounded hover:bg-gray-100 lg:hover:bg-transparent head-item lg:p-0"
                   >
                     GALLERY

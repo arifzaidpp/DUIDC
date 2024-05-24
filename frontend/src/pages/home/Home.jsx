@@ -1,53 +1,25 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import Banner from "../../components/banner/Banner";
-import AboutBanner from "../../components/aboutBanner/AboutBanner";
-import Admission from "../../components/admission/Admission";
-import News from "../../components/news/News";
-import Events from "../../components/events/Events";
+import Banner from "../../components/home/banner/Banner";
+import AboutBanner from "../../components/home/aboutBanner/AboutBanner";
+import Admission from "../../components/home/admission/Admission";
+import News from "../../components/home/news/News";
 import Footer from "../../components/footer/Footer";
+import LatestEvents from "../../components/latestEvents/LatestEvents";
 
 const Home = () => {
-    return (
-        <>
-            <Navbar />
-            <Banner/>
-            <AboutBanner/>
-            <Admission/>
-            <News/>
-            <Events/>
-            <Footer/>
-            {/* <div id="page-content" className="page-content">
-                <div className="container">
-                    <div className="row">
 
-
-                        <div id="page-main-content" className="page-main-content">
-
-                            <div className="rich-snippet display-none">
-                                <h1 className="entry-title">University 01</h1>	<span className="published">March 22, 2021</span>
-                                <span className="updated" data-time="2021-05-04 8:28">2021-05-04 8:28</span>
-                            </div>
-
-                            <article id="post-2136" className="post-2136 page type-page status-publish hentry post-no-thumbnail">
-                                <h2 className="screen-reader-text">University 01</h2>
-                                <div data-elementor-type="wp-page" data-elementor-id="2136" className="elementor elementor-2136" data-elementor-post-type="page">
-                                    <div className="elementor-inner">
-                                        <div className="elementor-section-wrap">
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div> */}
-        </>
-    );
+  return (
+    <>
+      <Navbar />
+      <Banner />
+      <AboutBanner />
+      <Admission />
+      <News />
+      <LatestEvents  message="home" />
+      <Footer />
+    </>
+  );
 };
 
 export default Home;

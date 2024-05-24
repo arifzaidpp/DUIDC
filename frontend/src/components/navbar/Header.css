@@ -83,14 +83,13 @@ box-shadow: none; /* Optional: Remove any box shadow */
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   box-sizing: inherit;
   width: 20rem;
-  padding: 3px 3px;
+  padding-left: 2rem !important;
   outline: none !important;
   border-radius: 0;
   font-size: 17px;
   color: var(--unicamp-color-form-text);
   min-height: 48px;
   font-weight: 500;
-  padding-left: 32px;
   border: 0;
   background: none !important;
   border-bottom: 2px solid #ededed !important;

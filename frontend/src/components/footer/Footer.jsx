@@ -53,27 +53,22 @@ function Footer() {
                 </h2>
                 <ul className="text-gray-500 foot-sub-p dark:text-gray-400 font-medium">
                   <li className="mb-4">
-                    <a href="" className="hover:underline">
+                    <a href="/about" className="hover:underline">
                       About Us
                     </a>
                   </li>
                   <li className="mb-4">
-                    <a href=" " className="hover:underline">
-                      Campus Life
+                    <a href="/blogs" className="hover:underline">
+                      Blogs
                     </a>
                   </li>
                   <li className="mb-4">
-                    <a href=" " className="hover:underline">
-                      News
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a href=" " className="hover:underline">
+                    <a href=" /events" className="hover:underline">
                       Events
                     </a>
                   </li>
                   <li className="mb-4">
-                    <a href=" " className="hover:underline">
+                    <a href="/contact" className="hover:underline">
                       Contact
                     </a>
                   </li>
@@ -85,27 +80,27 @@ function Footer() {
                 </h2>
                 <ul className=" foot-sub-p text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
-                    <a href="" className="hover:underline ">
+                    <a href="/committee" className="hover:underline ">
                     Committee
                     </a>
                   </li>
                   <li className="mb-4">
-                    <a href="" className="hover:underline">
+                    <a href="/staffs" className="hover:underline">
                       Staffs
                     </a>
                   </li>
                   <li className="mb-4">
-                    <a href="" className="hover:underline ">
-                      Alumni
+                    <a href="/ihsas" className="hover:underline ">
+                      Ihsas
                     </a>
                   </li>
                   <li className="mb-4">
-                    <a href="" className="hover:underline ">
+                    <a href="/department" className="hover:underline ">
                     Department
                     </a>
                   </li>
                   <li className="mb-4">
-                    <a href="" className="hover:underline ">
+                    <a href="/gallery" className="hover:underline ">
                      Gallery
                     </a>
                   </li>

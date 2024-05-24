@@ -1,0 +1,36 @@
+.pt-14{
+ padding-top: 3.5rem;
+}
+
+.s-heading{
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.24;
+    font-family: Butler;
+
+    border-bottom: 3px solid #ae152d;
+    text-align: center;
+    display: inline-block;
+}
+
+.s-sub-h{
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.24;
+    font-family: Butler;
+
+    border-bottom: 1px solid #ae152d;
+    text-align: center;
+    display: inline-block;
+}
+
+.s-t-heading{
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.24;
+    font-family: Butler;
+
+    border-bottom: 2px solid #ae152d;
+    text-align: center;
+    display: inline-block;
+}
