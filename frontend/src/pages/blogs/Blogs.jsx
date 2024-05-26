@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
@@ -16,9 +14,7 @@ const Post = () => {
             <h1 className="mt-2 text-3xl font-bold text-gray-900 sm:text-5xl">
               7 rules of effective marketing
             </h1>
-            <p className="mt-6 text-lg text-gray-700">
-              Writer
-            </p>
+            <p className="mt-6 text-lg text-gray-700">Writer</p>
             <div
               className="mt-6 flex flex-wrap justify-center gap-2"
               aria-label="Tags"
@@ -43,28 +39,9 @@ const Post = () => {
             />
           </header>
 
-          {/* <div className="mx-auto mt-10 max-w-screen-md space-y-12 px-4 py-10 font-serif text-lg tracking-wide text-gray-700">
-            <strong className="text-2xl font-medium">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime
-              impedit ex consequatur nostrum cupiditate at sequi? Ipsam commodi
-              modi officia mollitia doloribus tenetur consectetur quae?
-            </strong>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-              enim maxime sit laudantium! Dolore atque, maxime iusto ut quas
-              distinctio reiciendis animi voluptatibus soluta molestias,
-              mollitia officiis laboriosam illum earum.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-              similique reiciendis et recusandae provident repellendus rem
-              doloremque eaque error assumenda?
-            </p>
-          </div> */}
-
           <div className="w-screen bg-white pt-20">
             <main className="relative mx-auto px-10 md:max-w-screen-md">
-              <div className="top-20 -left-56 mb-10 w-full max-w-xs rounded-md border bg-white px-6 py-6 shadow-md lg:absolute lg:w-56">
+              <div className="top-20 -left-56 mb-10 w-full max-w-xs rounded-md border bg-white px-6 py-6 shadow-md xl:absolute mx-auto xl:w-56">
                 <div className="pb-2 text-xl font-medium text-orange-600">
                   Table of Contents
                 </div>
@@ -73,7 +50,7 @@ const Post = () => {
                   <div className="mb-3">
                     <a
                       className="mb-1 text-sm font-medium text-orange-600 hover:text-orange-600"
-                      href="/#section-one"
+                      href="#section-one"
                     >
                       Section One
                     </a>
@@ -121,6 +98,14 @@ const Post = () => {
                 </div>
               </div>
               <article className="text-gray-800">
+                <div className="mx-auto max-w-screen-md space-y-12 px-4 pb-10 font-serif text-lg tracking-wide text-gray-700">
+                  <strong className="text-2xl font-medium">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Maxime impedit ex consequatur nostrum cupiditate at sequi?
+                    Ipsam commodi modi officia mollitia doloribus tenetur
+                    consectetur quae?
+                  </strong>
+                </div>
                 <h2 id="section-one" className="mb-4 text-3xl font-bold">
                   Section One
                 </h2>

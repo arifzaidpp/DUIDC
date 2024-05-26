@@ -19,7 +19,7 @@ const Members = () => {
                 <div className="underline"></div>
               </div>
             </div>
-            <div className="grid gap-12 items-center md:grid-cols-2">
+            <div className="grid gap-12 items-center md:grid-cols-3">
               <div className="space-y-4 text-center">
                 <h1 className="s-sub-h">President</h1>
                 <img
@@ -47,6 +47,21 @@ const Members = () => {
                 />
                 <div>
                   <h4 className="text-2xl">Anabelle Doe</h4>
+                </div>
+              </div>
+
+              <div className="space-y-4 text-center">
+                <h1 className="s-sub-h">Treasurer</h1>
+                <img
+                  className="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
+                  src="https://tailus.io/sources/blocks/classic/preview/images/man.jpg"
+                  alt="woman"
+                  loading="lazy"
+                  width="640"
+                  height="805"
+                />
+                <div>
+                  <h4 className="text-2xl">Hentoni Doe</h4>
                 </div>
               </div>
             </div>
