@@ -39,7 +39,6 @@ const LatestEvents = (home) => {
                   >
                     <figure className=" first relative max-w-2xl transition-all duration-300 cursor-pointer">
                       <a
-                        href="#"
                         className="transition absolute duration-900 ease-in-out object-fill hover:scale-110"
                       >
                         <div className="img-gradient">
@@ -78,7 +77,7 @@ const LatestEvents = (home) => {
                       ref={domRef}
                     >
                       <figure className=" sub relative max-w-2xl transition-all duration-300 cursor-pointer">
-                        <a href="#">
+                        <a >
                           <div className="img-gradient-sub">
                             <img
                               className="transition absolute duration-900 ease-in-out object-cover hover:scale-110"
@@ -114,7 +113,7 @@ const LatestEvents = (home) => {
                       ref={domRef}
                     >
                       <figure className=" sub relative max-w-2xl transition-all duration-300 cursor-pointer">
-                        <a href="#">
+                        <a>
                           <div className="img-gradient-sub">
                             <img
                               className="transition absolute duration-900 ease-in-out object-cover hover:scale-110"
@@ -145,9 +144,9 @@ const LatestEvents = (home) => {
                   </div>
                 </div>
 
-                <div className= {`ev-hero-btns ${
-                        home.message=="home" ? "visible" : ""
-                      }`}>
+                { home.message=="home" ? 
+
+                <div className="ev-hero-btns">
                   <a href="/events">
                     <button
                       type="button"
@@ -160,6 +159,7 @@ const LatestEvents = (home) => {
                     </button>
                   </a>
                 </div>
+: null}
               </div>
             </div>
           </div>

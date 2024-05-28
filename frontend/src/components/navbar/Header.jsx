@@ -60,6 +60,7 @@ const Header = () => {
                         type="search"
                         className="search-field"
                         placeholder="Search…"
+                        name="search"
                       />
                     </label>
                     <button type="submit" className="search-submit">

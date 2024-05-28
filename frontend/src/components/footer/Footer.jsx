@@ -16,6 +16,8 @@ function Footer() {
                   type="text"
                   className="ft-input"
                   placeholder="Your e-mail"
+                  name="email"
+                  autoComplete="@gmail.com"
                 />
               </div>
               <div className="ft-hero-btns">

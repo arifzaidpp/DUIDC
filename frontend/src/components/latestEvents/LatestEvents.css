@@ -248,11 +248,6 @@
   margin-left: auto;
   max-width: 260px;
   position: relative;
-  display: none;
-}
-
-.ev-hero-btns.visible{
-  display: block;
 }
 
 .ev-hero-btns .ev-red {

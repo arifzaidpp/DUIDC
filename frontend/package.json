@@ -15,6 +15,7 @@
     "bootstrap": "^5.3.3",
     "flowbite": "^2.3.0",
     "fs-extra": "^11.2.0",
+    "lightbox.js-react": "^1.0.8",
     "next": "13.4.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",

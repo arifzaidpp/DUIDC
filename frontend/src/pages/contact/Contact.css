@@ -1,13 +1,29 @@
-.c-form div input ,.c-form div textarea{
-    border-color: #E5E7EB !important;
+.c-form div input,
+.c-form div textarea {
+  border-color: #e5e7eb !important;
 }
 
 .bg-\[\#a91079\] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(157, 34, 53) !important;
+  --tw-bg-opacity: 1;
+  background-color: rgb(157, 34, 53) !important;
 }
 
 .bg-\[\#2e0249\] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(38 38 38 / 78%) !important;
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / 78%) !important;
+}
+
+.google-maps {
+  position: relative;
+  padding-bottom: 30rem;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.google-maps iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
 }

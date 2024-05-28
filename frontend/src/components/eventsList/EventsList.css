@@ -2,7 +2,6 @@
   font-size: 14px;
   line-height: 1.47;
   min-height: 0;
-  margin-bottom: 15px;
   color: #000000;
   font-family: Butler;
   font-weight: 500;
@@ -31,7 +30,7 @@ figure.eventList-sub.relative.max-w-2xl.transition-all.duration-300.cursor-point
 
 @media (max-width: 1023px) {
   figure.eventList-sub.relative.max-w-2xl.transition-all.duration-300.cursor-pointer {
-    height: 85%;
+    height: 80%;
   }
 }
 .eventList-start-date {
@@ -51,9 +50,8 @@ figure.eventList-sub.relative.max-w-2xl.transition-all.duration-300.cursor-point
 }
 
 .evLi-body {
-    padding: 40px;
-  }
-
+  padding: 40px;
+}
 
 @media (max-width: 550px) {
   .eventList-title-sub {
@@ -75,4 +73,29 @@ figure.eventList-sub.relative.max-w-2xl.transition-all.duration-300.cursor-point
     padding: 1.25rem;
     padding-top: 0;
   }
+}
+
+.l-event-meta {
+  margin: 20px 0 0;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.l-event-meta {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  line-height: 26px;
+  position: relative;
+  margin: 0 -11px;
+}
+
+.l-event-meta .meta-item {
+  margin: 6px 0 0;
 }

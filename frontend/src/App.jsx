@@ -23,8 +23,8 @@ function App() {
         <Route path="/ihsas" element={<Ihsas />}/>
         <Route path="/gallery" element={<Gallery />}/>
         <Route path="/department" element={<Alumni/>}/>
-        <Route path="/post" element={<Post />}/>
-        <Route path="/blogs" element={<Blogs />}/>
+        <Route path="/post" element={<Alumni />}/>
+        <Route path="/blogs" element={<Alumni />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/contact" element={<Contact />}/>
         <Route path="/events" element={<Events />}/>
