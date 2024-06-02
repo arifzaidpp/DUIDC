@@ -116,7 +116,7 @@ box-shadow: none; /* Optional: Remove any box shadow */
   margin: 0;
   font: inherit;
   overflow: visible;
-  -webkit-appearance: button;
+  appearance: button;
   line-height: 50px;
   outline: none;
   border-radius: 0;
