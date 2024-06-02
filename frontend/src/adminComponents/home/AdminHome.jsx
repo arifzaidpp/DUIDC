@@ -50,7 +50,7 @@ const AdminHome = () => {
                 </svg>
               </div>
               <div className="px-4 text-gray-700">
-                <h3 className="text-sm tracking-wider">Total Comment</h3>
+                <h3 className="text-sm tracking-wider">Total Comments</h3>
                 <p className="text-3xl">142,334</p>
               </div>
             </div>
