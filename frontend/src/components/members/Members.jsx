@@ -4,7 +4,6 @@ import MainMembers from "./MainMembers";
 import SubMembers from "./SubMembers";
 
 const Members = (data) => {
-  console.log(data);
 
   const MPLength = data.data[0].mainMembers.length;
   return (
