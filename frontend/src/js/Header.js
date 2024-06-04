@@ -85,7 +85,7 @@ function scrollViewFunction() {
       navBot.classList.add("fixed-top");
       navBot.setAttribute("id", "navbar");
     }
-    else {
+    else if (logo || navBot || navbar) {
       logo.classList.remove("fixed-top");
       navBot.classList.remove("fixed-top");
       navbar.classList.remove("fixed-top");
