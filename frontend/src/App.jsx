@@ -23,9 +23,10 @@ import DepartmentList from "./pages/admin/DepartmentList";
 import GalleryImg from "./pages/admin/GalleryImg";
 import EventLists from "./pages/admin/EventLists";
 import Login from "./pages/login/Login";
+import { useAuthContext } from "./context/AuthContext";
 
 function App() {
-  const authAdmin = 1;
+  const { authUser } = useAuthContext();
   return (
     <>
       <Routes>
@@ -40,16 +41,16 @@ function App() {
         <Route path="/about" element={<About />}/>
         <Route path="/contact" element={<Contact />}/>
         <Route path="/events" element={<Events />}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/admin" element={authAdmin? <Admin/> : <Navigate to="/login" />}/>
-        <Route path="/admin/subscribers" element={authAdmin? <Subscribers/> : <Navigate to="/login" />}/>
-        <Route path="/admin/inbox" element={authAdmin? <Inbox/> : <Navigate to="/login" />}/>
-        <Route path="/admin/committee" element={authAdmin? <CommitteeList/> : <Navigate to="/login" />}/>
-        <Route path="/admin/ihsas" element={authAdmin? <IhsasList/> : <Navigate to="/login" />}/>
-        <Route path="/admin/staffs" element={authAdmin? <StaffsList/> : <Navigate to="/login" />}/>
-        <Route path="/admin/department" element={authAdmin? <DepartmentList/> : <Navigate to="/login" />}/>
-        <Route path="/admin/gallery" element={authAdmin? <GalleryImg/> : <Navigate to="/login" />}/>
-        <Route path="/admin/events" element={authAdmin? <EventLists/> : <Navigate to="/login" />}/>
+        <Route path="/login" element={authUser? <Navigate to="/admin" /> : <Login/>}/>
+        <Route path="/admin" element={authUser? <Admin/> : <Navigate to="/login" />}/>
+        <Route path="/admin/subscribers" element={authUser? <Subscribers/> : <Navigate to="/login" />}/>
+        <Route path="/admin/inbox" element={authUser? <Inbox/> : <Navigate to="/login" />}/>
+        <Route path="/admin/committee" element={authUser? <CommitteeList/> : <Navigate to="/login" />}/>
+        <Route path="/admin/ihsas" element={authUser? <IhsasList/> : <Navigate to="/login" />}/>
+        <Route path="/admin/staffs" element={authUser? <StaffsList/> : <Navigate to="/login" />}/>
+        <Route path="/admin/department" element={authUser? <DepartmentList/> : <Navigate to="/login" />}/>
+        <Route path="/admin/gallery" element={authUser? <GalleryImg/> : <Navigate to="/login" />}/>
+        <Route path="/admin/events" element={authUser? <EventLists/> : <Navigate to="/login" />}/>
       </Routes>
       <Toaster />
     </>
