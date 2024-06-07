@@ -191,7 +191,10 @@ const AdminHome = () => {
         </div>
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div className=" self-center justify-center rounded bg-gray-50 h-auto max-h-96 dark:bg-gray-800">
-            <a href="/admin/subscribers" className="no-underline hover:no-underline hover:text-inherit text-inherit">
+            <a
+              href="/admin/subscribers"
+              className="no-underline hover:no-underline hover:text-inherit text-inherit"
+            >
               <div className="bg-white shadow-md rounded-md my-6 overflow-hidden max-w-xl mx-auto">
                 <div className="bg-gray-100 py-2 px-4">
                   <h2 className="text-xl mb-0 font-semibold text-gray-800">
@@ -205,7 +208,12 @@ const AdminHome = () => {
                     </span>
                     <div className="flex-1">
                       <h3 className="text-lg font-medium text-gray-800">
-                        <div href="mailto:"  className="no-underline hover:no-underline text-inherit">someone@gmail.com</div>
+                        <div
+                          href="mailto:"
+                          className="no-underline hover:no-underline text-inherit"
+                        >
+                          someone@gmail.com
+                        </div>
                       </h3>
                     </div>
                   </li>
@@ -215,7 +223,10 @@ const AdminHome = () => {
           </div>
           <div className=" self-center justify-center rounded bg-gray-50 h-auto max-h-96 dark:bg-gray-800">
             <div className="bg-white shadow-md rounded-md my-6 overflow-hidden max-w-xl mx-auto">
-              <a href="/admin/events" className="no-underline hover:no-underline hover:text-inherit text-inherit">
+              <a
+                href="/admin/events"
+                className="no-underline hover:no-underline hover:text-inherit text-inherit"
+              >
                 <div className="bg-gray-100 py-2 px-4">
                   <h2 className="text-xl mb-0 font-semibold text-gray-800">
                     New Events
@@ -245,7 +256,12 @@ const AdminHome = () => {
           </div>
         </div>
         <div className="items-center justify-center h-auto mb-4 pt-1 rounded bg-gray-50 dark:bg-gray-800">
-        <GalleryPhotos/>
+          <a
+            href="/admin/gallery"
+            className="no-underline hover:no-underline hover:text-inherit text-inherit"
+          >
+            <GalleryPhotos />
+          </a>
         </div>
       </div>
     </div>
