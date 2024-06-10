@@ -1,20 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Gallery.css";
 import { SlideshowLightbox } from "lightbox.js-react";
 import "lightbox.js-react/dist/index.css";
 import UploadImages from "../../adminComponents/uploadImages/UploadImages";
+import useFetchGalleryImages from "../../hooks/useFetchGalleryImages";
+
+const arrayBufferToBase64 = (buffer) => {
+  let binary = "";
+  const bytes = new Uint8Array(buffer);
+  const len = bytes.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return window.btoa(binary);
+};
 
 const GalleryPhotos = (admin) => {
-  const [addImg, setaddImg] = useState(false);
+  const [addImg, setAddImg] = useState(false);
+  const { images, loading } = useFetchGalleryImages();
 
   const handleClick = () => {
-    setaddImg(true);
+    setAddImg(true);
   };
 
   return (
     <>
       {addImg ? (
-        <UploadImages />
+        <UploadImages setAddImg={setAddImg} />
       ) : (
         <div className="container mt-4 mb-16 px-7">
           <div className="mb-16 mt-16 text-center">
@@ -50,75 +62,78 @@ const GalleryPhotos = (admin) => {
               ""
             )}
           </div>
-          {/* <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
-          <button
-            type="button"
-            className="text-red-700 hover:text-white border border-red-600 bg-white g-bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-gray-900 dark:focus:ring-blue-800"
+          {!loading && images.length === 0 ?(
+            <p>No images found</p>
+          ):""}
+          {loading && images.length === 0 ? (
+            <div
+            role="status"
+            className="p-4 rounded animate-pulse md:p-6"
           >
-            All categories
-          </button>
-          <button
-            type="button"
-            id="nav-all-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-all"
-            role="tab"
-            aria-controls="nav-all"
-            aria-selected="true"
-            className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800"
-          >
-            Shoes
-          </button>
-          <button
-            type="button"
-            className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800"
-          >
-            Bags
-          </button>
-          <button
-            type="button"
-            className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800"
-          >
-            Electronics
-          </button>
-          <button
-            type="button"
-            className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800"
-          >
-            Gaming
-          </button>
-        </div> */}
-          <div className="">
-            <div className="overflow-hidden bg-cover bg-no-repeat rounded-lg">
-              <SlideshowLightbox
-                className="container grid grid-cols-2 md:grid-cols-3 gap-8 mx-auto overflow-hidden rounded-lg hover:rounded-lg"
-                showThumbnails={true}
-              >
-                <img
-                  className="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-110 hover:rounded-lg"
-                  src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-                  alt=""
-                />
-                <img
-                  className="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-110 hover:rounded-lg"
-                  src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-                  alt=""
-                />
-                <img
-                  className="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-110 hover:rounded-lg"
-                  src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-                  alt=""
-                />
-              </SlideshowLightbox>
+            <div className="container grid grid-cols-2 md:grid-cols-3 gap-8 mx-auto overflow-hidden rounded-lg hover:rounded-lg">
+              <div className="flex items-center justify-center h-40 md:h-52 lg:h-80 mb-4 bg-gray-300 rounded dark:bg-gray-700">
+                <svg
+                  className="w-10 h-10 text-gray-200 dark:text-gray-600"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 16 20"
+                >
+                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                </svg>
+              </div>
+              <div className="flex items-center justify-center h-40 md:h-52 lg:h-80 mb-4 bg-gray-300 rounded dark:bg-gray-700">
+                <svg
+                  className="w-10 h-10 text-gray-200 dark:text-gray-600"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 16 20"
+                >
+                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                </svg>
+              </div>
+              <div className="flex items-center justify-center h-40 md:h-52 lg:h-80 mb-4 bg-gray-300 rounded dark:bg-gray-700">
+                <svg
+                  className="w-10 h-10 text-gray-200 dark:text-gray-600"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 16 20"
+                >
+                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                </svg>
+              </div>
             </div>
-            {/* <div className="overflow-hidden bg-cover bg-no-repeat rounded-lg">
-            <img
-              className="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-110"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div> */}
+            <span className="sr-only">Loading...</span>
           </div>
+          ) : (
+            <div className="">
+              <div className="overflow-hidden bg-cover bg-no-repeat rounded-lg">
+                <SlideshowLightbox
+                  className="container grid grid-cols-2 md:grid-cols-3 gap-8 mx-auto overflow-hidden rounded-lg hover:rounded-lg"
+                  showThumbnails={true}
+                >
+                  {images
+                    .slice()
+                    .reverse()
+                    .map((image, index) => (
+                      <img
+                        className="h-40 md:h-52 lg:h-80 object-cover w-full max-w-full rounded-lg transition-all duration-300 hover:scale-110"
+                        key={index}
+                        src={`data:image/jpeg;base64,${arrayBufferToBase64(
+                          image.image.data
+                        )}`}
+                        alt={`Gallery Image ${index + 1}`}
+                      />
+                    ))}
+                </SlideshowLightbox>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </>
