@@ -30,3 +30,14 @@ export const getGalleryImages = async (req, res) => {
     res.status(500).json({ error: 'Error fetching images' });
   }
 };
+
+export const deleteGalleryImages = async (req, res) => {
+  const { imageIds } = req.body;
+  try {
+    await GalleryImage.deleteMany({ _id: { $in: imageIds } });
+    res.status(200).json({ message: 'Images deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting images:', error);
+    res.status(500).json({ error: 'Error deleting images' });
+  }
+};

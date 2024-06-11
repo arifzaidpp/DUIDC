@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import useDeleteGalleryImages from '../../hooks/useDeleteGalleryImages';
 
 const arrayBufferToBase64 = (buffer) => {
-  let binary = "";
+  let binary = '';
   const bytes = new Uint8Array(buffer);
   const len = bytes.byteLength;
   for (let i = 0; i < len; i++) {
@@ -12,6 +13,7 @@ const arrayBufferToBase64 = (buffer) => {
 
 const DeleteGalleryImages = ({ images, onClose }) => {
   const [selectedImages, setSelectedImages] = useState([]);
+  const { loading, deleteImages } = useDeleteGalleryImages(selectedImages, onClose);
 
   const handleCheckboxChange = (imageId) => {
     setSelectedImages((prevSelectedImages) =>
@@ -22,25 +24,11 @@ const DeleteGalleryImages = ({ images, onClose }) => {
   };
 
   const handleDelete = async () => {
-    try {
-      const response = await fetch("/api/deleteImages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ imageIds: selectedImages }),
-      });
-      if (response.ok) {
-        alert("Images deleted successfully!");
-        onClose(); // Close the modal
-        // Optionally, refetch the images or update the state to remove deleted images
-      } else {
-        alert("Failed to delete images.");
-      }
-    } catch (error) {
-      console.error("Error deleting images:", error);
-      alert("An error occurred while deleting images.");
+    if (selectedImages.length === 0) {
+      alert('Please select at least one image to delete.');
+      return;
     }
+    await deleteImages();
   };
 
   return (
@@ -50,9 +38,7 @@ const DeleteGalleryImages = ({ images, onClose }) => {
       </div>
       <div className="max-h-[calc(100vh-200px)] overflow-y-auto no-scrollbar">
         <ul className="divide-y divide-gray-200">
-          {images.slice()
-              .reverse()
-              .map((image, index) => (
+          {images.slice().reverse().map((image, index) => (
             <li key={image._id} className="flex items-center py-4 px-6">
               <input
                 type="checkbox"
@@ -76,6 +62,7 @@ const DeleteGalleryImages = ({ images, onClose }) => {
           id="delete"
           className="rounded-sm px-3 py-1 bg-blue-700 hover:bg-blue-500 text-white focus:shadow-outline focus:outline-none"
           onClick={handleDelete}
+          disabled={loading}
         >
           Delete Images
         </button>
