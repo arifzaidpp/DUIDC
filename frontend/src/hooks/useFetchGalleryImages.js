@@ -15,6 +15,7 @@ const useFetchGalleryImages = () => {
           throw new Error(errorText);
         }
         const data = await res.json();
+        console.log(data);
         setImages(data);
       } catch (error) {
         console.error('Error fetching images:', error);

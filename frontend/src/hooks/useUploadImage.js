@@ -36,7 +36,7 @@ const useUploadImage = (setAddImg) => {
       setAddImg(false)
     } catch (error) {
       console.log(error.message);
-      toast.error(error.message);
+      toast.error(error.message.error);
     } finally {
       setLoading(false);
     }
