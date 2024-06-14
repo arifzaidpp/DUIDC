@@ -16,6 +16,7 @@ const useDeleteGalleryImages = (selectedImages, onClose) => {
       });
       if (response.ok) {
         toast.success('Images deleted successfully!');
+        window.location.href = '/admin/gallery';
         onClose(); // Close the modal
         // Optionally, refetch the images or update the state to remove deleted images
       } else {

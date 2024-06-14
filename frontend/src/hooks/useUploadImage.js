@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 const useUploadImage = (setAddImg) => {
   const [loading, setLoading] = useState(false);
 
-
   const addImg = async (images) => {
     const success = handleInputErrors(images);
     if (!success) return;
@@ -31,7 +30,8 @@ const useUploadImage = (setAddImg) => {
       }
 
       toast.success('Images uploaded successfully!');
-      setAddImg(false)
+      window.location.href = '/admin/gallery';
+      setAddImg(false);
     } catch (error) {
       console.log(error.message);
       toast.error(error.message.error);
