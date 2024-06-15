@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const useAddEvent = () => {
+const useAddEvent = (onClose) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -26,6 +26,9 @@ const useAddEvent = () => {
       const res = await fetch("/api/events/upload", {
         method: 'POST',
         body: formData,
+        limits: {
+          fileSize: 2 * 1024 * 1024, // 2MB limit
+        },
       });
 
       if (!res.ok) {
@@ -39,6 +42,8 @@ const useAddEvent = () => {
       }
 
       toast.success('Event added successfully!');
+      window.location.href = '/admin/events';
+      onClose();
     } catch (err) {
       console.log(err.message);
       toast.error(err.message);

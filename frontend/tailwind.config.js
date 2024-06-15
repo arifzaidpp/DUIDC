@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      gradientColorStops: {
+        'transparent-custom': '#000000b5'
+      },
     },
     
 

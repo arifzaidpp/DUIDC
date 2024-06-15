@@ -1,43 +1,90 @@
 import React from "react";
 
-const EventListItem = () => {
-  const [isVisible, setVisible] = React.useState(true);
-  const domRef = React.useRef();
+const EventListItem = ({ event }) => {
+  const [isVisible, setVisible] = React.useState(false);
+  const domRef = React.useRef(null);
+
   React.useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => setVisible(entry.isIntersecting));
     });
-    observer.observe(domRef.current);
-    return () => observer.unobserve(domRef.current);
+
+    const currentDomRef = domRef.current;
+    if (currentDomRef) {
+      observer.observe(currentDomRef);
+    }
+
+    return () => {
+      if (currentDomRef) {
+        observer.unobserve(currentDomRef);
+      }
+    };
   }, []);
+
+  const arrayBufferToBase64 = (buffer) => {
+    let binary = "";
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  };
+
+  const formatEventDate = (dateString) => {
+    const eventDate = new Date(dateString);
+    const options = { month: "short", day: "numeric" };
+    return eventDate.toLocaleDateString("en-US", options);
+  };
+
+  const convertTo12Hour = (time24) => {
+    const [hours, minutes] = time24.split(":");
+    let period = "AM";
+    let hours12 = parseInt(hours, 10);
+    if (hours12 >= 12) {
+      period = "PM";
+      if (hours12 > 12) {
+        hours12 -= 12;
+      }
+    }
+    if (hours12 === 0) {
+      hours12 = 12;
+    }
+    return `${hours12}:${minutes} ${period}`;
+  };
+
 
   return (
     <div
       className={`fade-in-section ${isVisible ? "is-visible" : ""}`}
       ref={domRef}
     >
-      <figure className=" eventList-sub relative max-w-2xl transition-all duration-300 cursor-pointer">
+      <figure className="relative w-full transition-all duration-300 cursor-pointer">
         <a href="#">
-          <div className="img-gradient-sub">
+          <div className="img-gradient-sub overflow-hidden">
             <img
-              className="transition absolute duration-900 ease-in-out object-cover hover:scale-110"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/content-gallery-3.png"
-              alt="image description"
+              className="transition duration-900 ease-in-out object-cover hover:scale-110 w-full h-48 md:h-64"
+              src={`data:image/jpeg;base64,${arrayBufferToBase64(
+                event.image.data
+              )}`}
+              alt={event.eventName}
             />
           </div>
         </a>
-        <figcaption className="ev-text-btm-sub absolute px-8 text-lg text-black bottom-6">
-          <div className="eventList-start-date">
-            <span>Apr 19</span>
+        <figcaption className="-mt-5 text-black text-center relative z-40">
+          <div className="eventList-start-date mb-2">
+            <span className="bg-red-800 px-2 py-1 pt-2 text-sm text-white font-semibold uppercase w-[4.5rem] inline-block">
+              {formatEventDate(event.eventDate)}
+            </span>
           </div>
-          <h3 className="eventList-title-sub post-title-2-rows">
-            <span>Roadmap to the Sustainable Development Goals</span>
+          <h3 className="eventList-title-sub text-lg font-medium truncate">
+            {event.eventName}
           </h3>
-          <div className="l-event-meta">
-            <div className="meta-list">
-              <div className="meta-item-sub eventList-time">
-                2:30 pm - 3:30 pm
-              </div>
+          <div className="l-event-meta mt-2 text-sm">
+            <div className="meta-item-sub eventList-time">
+              {`${convertTo12Hour(event.eventStartTime)} - ${convertTo12Hour(
+                event.eventEndTime
+              )}`}
             </div>
           </div>
         </figcaption>

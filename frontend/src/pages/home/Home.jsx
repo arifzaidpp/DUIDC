@@ -6,8 +6,10 @@ import Admission from "../../components/home/admission/Admission";
 import News from "../../components/home/news/News";
 import Footer from "../../components/footer/Footer";
 import LatestEvents from "../../components/latestEvents/LatestEvents";
+import useFetchEvents from "../../hooks/useGetAllEvents";
 
 const Home = () => {
+  const { events, loading, error } = useFetchEvents();
 
   return (
     <>
@@ -15,8 +17,7 @@ const Home = () => {
       <Banner />
       <AboutBanner />
       <Admission />
-      {/* <News /> */}
-      <LatestEvents  message="home" />
+      <LatestEvents home={{ message: "home" }} events={events.slice(0, 3)} />
       <Footer />
     </>
   );

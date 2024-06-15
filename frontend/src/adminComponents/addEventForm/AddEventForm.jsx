@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import useAddEvent from '../../hooks/useAddEvent';
+import React, { useState } from "react";
+import useAddEvent from "../../hooks/useAddEvent";
 
 const AddEventForm = ({ onClose, onSubmit }) => {
   const [formData, setFormData] = useState({
-    eventName: '',
-    eventDate: '',
-    eventStartTime: '',
-    eventEndTime: '',
-    eventDescription: '',
+    eventName: "",
+    eventDate: "",
+    eventStartTime: "",
+    eventEndTime: "",
+    eventDescription: "",
     eventImage: null,
   });
 
-  const { addEvent, loading, error } = useAddEvent(); // Use the hook
+  const { addEvent, loading, error } = useAddEvent(onClose); // Use the hook
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,7 +19,29 @@ const AddEventForm = ({ onClose, onSubmit }) => {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, eventImage: e.target.files[0] });
+    const file = e.target.files[0];
+    const maxSize = 2 * 1024 * 1024; // 2MB limit
+    if (file) {
+      if (file.size > maxSize) {
+        alert("File size exceeds 2MB limit. Please choose a smaller file.");
+        return;
+      }
+      // Display image preview
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({
+          ...formData,
+          eventImage: file,
+          imagePreview: reader.result,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleRemoveImage = () => {
+    // Remove the selected image and reset the preview
+    setFormData({ ...formData, eventImage: null, imagePreview: null });
   };
 
   const handleFormSubmit = async (e) => {
@@ -119,37 +141,69 @@ const AddEventForm = ({ onClose, onSubmit }) => {
                 Upload Event Image
               </label>
               <div className="flex items-center justify-center w-full">
-                <label className="flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-purple-300 group">
-                  <div className="flex flex-col items-center justify-center pt-7">
-                    <svg
-                      className="w-10 h-10 text-purple-400 group-hover:text-purple-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+                {formData.imagePreview ? (
+                  <div className="relative group">
+                    <img
+                      src={formData.imagePreview}
+                      alt="Event Preview"
+                      className="w-1/2 h-full object-cover mx-auto rounded-lg cursor-pointer"
+                      onClick={() =>
+                        document.getElementById("eventImageInput").click()
+                      }
+                    />
+                    <div
+                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white rounded-full cursor-pointer flex items-center justify-center h-10 w-10"
+                      onClick={handleRemoveImage}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      ></path>
-                    </svg>
-                    <p className="lowercase text-sm text-gray-400 group-hover:text-purple-600 pt-1 tracking-wider">
-                      Select an image
-                    </p>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </div>
                   </div>
-                  <input
-                    type="file"
-                    className="hidden"
-                    name="eventImage"
-                    onChange={handleFileChange}
-                    required
-                  />
-                </label>
+                ) : (
+                  <label className="flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-purple-300 group">
+                    <div className="flex flex-col items-center justify-center pt-7">
+                      <svg
+                        className="w-10 h-10 text-purple-400 group-hover:text-purple-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                      <p className="lowercase text-sm text-gray-400 group-hover:text-purple-600 pt-1 tracking-wider">
+                        Select an image
+                      </p>
+                    </div>
+                    <input
+                      type="file"
+                      className="hidden"
+                      id="eventImageInput"
+                      onChange={handleFileChange}
+                      required
+                    />
+                  </label>
+                )}
               </div>
             </div>
-            
+
             <div className="mt-auto flex px-8 items-center justify-center md:gap-8 gap-4 pt-5 pb-5">
               <button
                 type="button"
