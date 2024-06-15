@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-const EventListItem = ({ event }) => {
+const EventListItem = ({ event, openImagePopup }) => {
   const [isVisible, setVisible] = React.useState(false);
   const domRef = React.useRef(null);
 
@@ -53,14 +53,12 @@ const EventListItem = ({ event }) => {
     return `${hours12}:${minutes} ${period}`;
   };
 
-
   return (
     <div
       className={`fade-in-section ${isVisible ? "is-visible" : ""}`}
       ref={domRef}
     >
       <figure className="relative w-full transition-all duration-300 cursor-pointer">
-        <a href="#">
           <div className="img-gradient-sub overflow-hidden">
             <img
               className="transition duration-900 ease-in-out object-cover hover:scale-110 w-full h-48 md:h-64"
@@ -68,9 +66,15 @@ const EventListItem = ({ event }) => {
                 event.image.data
               )}`}
               alt={event.eventName}
+              onClick={() =>
+                openImagePopup(
+                  `data:image/jpeg;base64,${arrayBufferToBase64(
+                    event.image.data
+                  )}`
+                )
+              }
             />
           </div>
-        </a>
         <figcaption className="-mt-5 text-black text-center relative z-40">
           <div className="eventList-start-date mb-2">
             <span className="bg-red-800 px-2 py-1 pt-2 text-sm text-white font-semibold uppercase w-[4.5rem] inline-block">

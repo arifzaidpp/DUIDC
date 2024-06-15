@@ -67,7 +67,6 @@ const LatestEvents = ({ home, events }) => {
   };
 
   const first = events.length - 1;
-  console.log(first);
 
   return (
     <section className="events">
