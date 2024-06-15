@@ -50,6 +50,7 @@ const EventsItems = () => {
   };
 
   const handleDeleteEvent = async (event) => {
+    alert("Are you sure you want to delete the event?")
     try {
       if (!event) return;
 

@@ -35,7 +35,7 @@ const EventsList = ({ events }) => {
                 <div className="grid lg:grid-cols-1 gap-6">
                   <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {events.length > 0 ? (
-                      events.map((event, index) => (
+                      events.slice().reverse().map((event, index) => (
                         <EventListItem key={index} event={event} />
                       ))
                     ) : (

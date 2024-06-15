@@ -15,8 +15,8 @@ const Events = () => {
       {error && <p>Error: {error}</p>}
       {!loading && !error && (
         <>
-          <LatestEvents events={events.slice(0, 3)} />
-          <EventsList events={events.slice(3)} />
+          <LatestEvents events={events.slice(-3)} />
+          <EventsList events={events.slice(0, -3)} />
         </>
       )}
       <Footer />

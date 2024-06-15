@@ -66,6 +66,9 @@ const LatestEvents = ({ home, events }) => {
     return `${hours12}:${minutes} ${period}`;
   };
 
+  const first = events.length - 1;
+  console.log(first);
+
   return (
     <section className="events">
       <div className="container mx-auto">
@@ -81,8 +84,8 @@ const LatestEvents = ({ home, events }) => {
                   Upcoming Events
                 </h3>
               </div>
-              <div className="ev-heading-divider mb-2">
-                <span className="inline-block w-32 h-1 bg-red-700"></span>
+              <div className="ev-heading-divider mb-2 -mt-2">
+                <span className="inline-block w-60 h-[3px] bg-red-800"></span>
               </div>
 
               <div className="ev-body py-10">
@@ -101,7 +104,7 @@ const LatestEvents = ({ home, events }) => {
                             onClick={() =>
                               openImagePopup(
                                 `data:image/jpeg;base64,${arrayBufferToBase64(
-                                  events[0].image.data
+                                  events[first].image.data
                                 )}`
                               )
                             }
@@ -109,13 +112,13 @@ const LatestEvents = ({ home, events }) => {
                             <img
                               className="transition duration-900 ease-in-out object-cover group-hover:scale-110 w-full h-96"
                               src={`data:image/jpeg;base64,${arrayBufferToBase64(
-                                events[0].image.data
+                                events[first].image.data
                               )}`}
-                              alt={events[0].eventName}
+                              alt={events[first].eventName}
                               onClick={() =>
                                 openImagePopup(
                                   `data:image/jpeg;base64,${arrayBufferToBase64(
-                                    events[0].image.data
+                                    events[first].image.data
                                   )}`
                                 )
                               }
@@ -125,17 +128,17 @@ const LatestEvents = ({ home, events }) => {
                         <figcaption className="absolute bottom-0 left-0 right-0 p-8 custom-gradient text-white transition duration-900 ease-in-out">
                           <div className="event-start-date mb-2">
                             <span className="bg-red-800 px-2 py-1 text-base text-white font-semibold uppercase w-20 inline-block">
-                              {formatEventDate(events[0].eventDate)}
+                              {formatEventDate(events[first].eventDate)}
                             </span>
                           </div>
                           <h3 className="event-title text-4xl p-2 font-medium truncate">
-                            {events[0].eventName}
+                            {events[first].eventName}
                           </h3>
                           <div className="event-meta mt-2 text-sm">
                             <div className="event-time">
                               {`${convertTo12Hour(
-                                events[0].eventStartTime
-                              )} - ${convertTo12Hour(events[0].eventEndTime)}`}
+                                events[first].eventStartTime
+                              )} - ${convertTo12Hour(events[first].eventEndTime)}`}
                             </div>
                           </div>
                         </figcaption>
@@ -146,7 +149,7 @@ const LatestEvents = ({ home, events }) => {
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Render additional events if there are more than 1 */}
                     {events.length >= 2 &&
-                      events.slice(1).map((event, index) => (
+                      events.slice(0, -1).slice(0, 2).reverse().map((event, index) => (
                         <div
                           key={index}
                           className={`fade-in-section ${
