@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useAddEvent from "../../hooks/useAddEvent";
+import useUpdateEvent from "../../hooks/useUpdateEvent";
 
-const AddEventForm = ({ onClose, onSubmit }) => {
+const AddEventForm = ({ onClose, onSubmit, initialData }) => {
   const [formData, setFormData] = useState({
     eventName: "",
     eventDate: "",
@@ -11,7 +12,35 @@ const AddEventForm = ({ onClose, onSubmit }) => {
     eventImage: null,
   });
 
-  const { addEvent, loading, error } = useAddEvent(onClose); // Use the hook
+  const { addEvent, loading: addLoading, error: addError } = useAddEvent(onClose);
+  const { updateEvent, loading: updateLoading, error: updateError } = useUpdateEvent(onClose);
+
+  // Utility function to convert ArrayBuffer to base64
+  const arrayBufferToBase64 = (buffer) => {
+    let binary = "";
+    let bytes = new Uint8Array(buffer);
+    let len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  };
+
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        eventName: initialData.eventName || "",
+        eventDate: initialData.eventDate ? new Date(initialData.eventDate).toISOString().split('T')[0] : "",
+        eventStartTime: initialData.eventStartTime || "",
+        eventEndTime: initialData.eventEndTime || "",
+        eventDescription: initialData.eventDescription || "",
+        eventImage: null,
+        imagePreview: initialData.image.data? `data:image/jpeg;base64,${arrayBufferToBase64(
+          initialData.image.data
+        )}` : null,
+      });
+    }
+  }, [initialData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +55,6 @@ const AddEventForm = ({ onClose, onSubmit }) => {
         alert("File size exceeds 2MB limit. Please choose a smaller file.");
         return;
       }
-      // Display image preview
       const reader = new FileReader();
       reader.onloadend = () => {
         setFormData({
@@ -40,19 +68,20 @@ const AddEventForm = ({ onClose, onSubmit }) => {
   };
 
   const handleRemoveImage = () => {
-    // Remove the selected image and reset the preview
     setFormData({ ...formData, eventImage: null, imagePreview: null });
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
     const data = new FormData();
     for (const key in formData) {
       data.append(key, formData[key]);
     }
-
-    await addEvent(data); // Send data to the hook
+    if (initialData) {
+      await updateEvent(initialData._id, data);
+    } else {
+      await addEvent(data);
+    }
     onSubmit();
   };
 
@@ -60,11 +89,11 @@ const AddEventForm = ({ onClose, onSubmit }) => {
     <div className="flex h-full rounded-2xl bg-gray-200 items-center justify-center">
       <div className="flex flex-col bg-white rounded-lg shadow-xl w-full max-h-full">
         <div className="bg-gray-100 py-2 px-4">
-          <h2 className="text-xl font-semibold text-gray-800">Add New Event</h2>
+          <h2 className="text-xl font-semibold text-gray-800">{initialData ? "Edit Event" : "Add New Event"}</h2>
         </div>
-
         <div className="flex-grow overflow-y-auto max-h-[calc(100vh-200px)] px-4">
           <form onSubmit={handleFormSubmit} className="flex flex-col h-full">
+            {/* Event Name */}
             <div className="grid grid-cols-1 mt-5 mx-7">
               <label className="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">
                 Event Name
@@ -79,7 +108,7 @@ const AddEventForm = ({ onClose, onSubmit }) => {
                 required
               />
             </div>
-
+            {/* Event Date */}
             <div className="grid grid-cols-1 mt-5 mx-7">
               <label className="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">
                 Event Date
@@ -93,7 +122,7 @@ const AddEventForm = ({ onClose, onSubmit }) => {
                 required
               />
             </div>
-
+            {/* Event Start and End Time */}
             <div className="grid grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
               <div className="grid grid-cols-1">
                 <label className="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">
@@ -122,7 +151,7 @@ const AddEventForm = ({ onClose, onSubmit }) => {
                 />
               </div>
             </div>
-
+            {/* Event Description */}
             <div className="grid grid-cols-1 mt-5 mx-7">
               <label className="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">
                 Event Description
@@ -135,7 +164,7 @@ const AddEventForm = ({ onClose, onSubmit }) => {
                 onChange={handleInputChange}
               />
             </div>
-
+            {/* Event Image */}
             <div className="grid grid-cols-1 mt-5 mx-7">
               <label className="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">
                 Upload Event Image
@@ -147,9 +176,7 @@ const AddEventForm = ({ onClose, onSubmit }) => {
                       src={formData.imagePreview}
                       alt="Event Preview"
                       className="w-1/2 h-full object-cover mx-auto rounded-lg cursor-pointer"
-                      onClick={() =>
-                        document.getElementById("eventImageInput").click()
-                      }
+                      onClick={() => document.getElementById("eventImageInput").click()}
                     />
                     <div
                       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white rounded-full cursor-pointer flex items-center justify-center h-10 w-10"
@@ -197,26 +224,26 @@ const AddEventForm = ({ onClose, onSubmit }) => {
                       className="hidden"
                       id="eventImageInput"
                       onChange={handleFileChange}
-                      required
                     />
                   </label>
                 )}
               </div>
             </div>
-
             <div className="mt-auto flex px-8 items-center justify-center md:gap-8 gap-4 pt-5 pb-5">
-              <button
+               <button
                 type="button"
                 className="w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2"
                 onClick={onClose}
               >
                 Cancel
               </button>
+              {addError && <p className="text-red-500 mt-2">{addError}</p>}
+              {updateError && <p className="text-red-500 mt-2">{updateError}</p>}
               <button
                 type="submit"
                 className="w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2"
               >
-                Create
+                {initialData ? "Update Event" : "Add Event"}
               </button>
             </div>
           </form>

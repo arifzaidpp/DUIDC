@@ -7,6 +7,7 @@ import useDeleteEvent from '../../hooks/useDeleteEvent';
 
 const EventsItems = () => {
   const [isAddEventOpen, setIsAddEventOpen] = useState(false);
+  const [eventToEdit, setEventToEdit] = useState(null);
   const [eventToDelete, setEventToDelete] = useState(null);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
   const [popupImageSrc, setPopupImageSrc] = useState('');
@@ -29,14 +30,12 @@ const EventsItems = () => {
 
   const closeAddEventPopup = () => {
     setIsAddEventOpen(false);
+    setEventToEdit(null);
   };
 
-  const openDeleteEventPopup = (event) => {
-    setEventToDelete(event);
-  };
-
-  const closeDeleteEventPopup = () => {
-    setEventToDelete(null);
+  const openEditEventPopup = (event) => {
+    setEventToEdit(event);
+    setIsAddEventOpen(true);
   };
 
   const openImagePopup = (imageSrc) => {
@@ -50,7 +49,7 @@ const EventsItems = () => {
   };
 
   const handleDeleteEvent = async (event) => {
-    alert("Are you sure you want to delete the event?")
+    alert("Are you sure you want to delete the event?");
     try {
       if (!event) return;
 
@@ -59,8 +58,6 @@ const EventsItems = () => {
     } catch (error) {
       console.error('Error deleting event:', error);
       toast.error(`Error deleting event: ${error.message}`);
-    } finally {
-      closeDeleteEventPopup();
     }
   };
 
@@ -166,7 +163,7 @@ const EventsItems = () => {
                       </button>
                       <button
                         className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-                        onClick={() => openDeleteEventPopup(event)}
+                        onClick={() => openEditEventPopup(event)}
                       >
                         Edit Event
                       </button>
@@ -182,7 +179,7 @@ const EventsItems = () => {
         </div>
       </div>
       <Popup isOpen={isAddEventOpen} onClose={closeAddEventPopup}>
-        <AddEventForm onClose={closeAddEventPopup} />
+        <AddEventForm onClose={closeAddEventPopup} onSubmit={fetchEvents} initialData={eventToEdit} />
       </Popup>
       {isImagePopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">

@@ -23,7 +23,6 @@ export const addEvent = async (req, res) => {
   }
 };
 
-
 // Function to fetch all events
 export const getAllEvents = async (req, res) => {
   try {
@@ -41,5 +40,27 @@ export const deleteEvent = async (req, res) => {
     res.status(200).json({ message: 'Event deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: 'Error deleting event', error });
+  }
+};
+
+// Function to update an event by ID
+export const updateEvent = async (req, res) => {
+  try {
+    const { eventName, eventDate, eventStartTime, eventEndTime, eventDescription } = req.body;
+    const eventImage = req.file.buffer;
+
+    const updatedEvent = {
+      eventName,
+      eventDate,
+      eventStartTime,
+      eventEndTime,
+      eventDescription,
+      image: eventImage,
+    };
+
+    await Event.findByIdAndUpdate(req.params.id, updatedEvent);
+    res.status(200).json({ message: 'Event updated successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating event', error: error.message });
   }
 };
