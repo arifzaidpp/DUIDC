@@ -9,6 +9,9 @@ import usersRoutes from "./routes/user.routes.js";
 import galleryRoutes from "./routes/gallery.routes.js";
 import eventRoutes from "./routes/event.routes.js";
 import committeeRoutes from "./routes/committee.routes.js";
+import ihsasRoutes from "./routes/ihsas.routes.js";
+import staffRoutes from "./routes/staff.routes.js";
+
 
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
@@ -32,6 +35,8 @@ app.use("/api/users", usersRoutes);
 app.use("/api/gallery", galleryRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/committee", committeeRoutes);
+app.use("/api/ihsas", ihsasRoutes);
+app.use("/api/staff", staffRoutes);
 
 
 app.use(express.static(path.join(__dirname,"/frontend/dist")))

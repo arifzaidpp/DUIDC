@@ -47,7 +47,7 @@ export const deleteEvent = async (req, res) => {
 export const updateEvent = async (req, res) => {
   try {
     const { eventName, eventDate, eventStartTime, eventEndTime, eventDescription } = req.body;
-    const eventImage = req.file.buffer;
+    const eventImage = req.file?.buffer;
 
     const updatedEvent = {
       eventName,

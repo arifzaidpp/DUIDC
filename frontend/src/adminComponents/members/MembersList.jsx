@@ -3,15 +3,17 @@
 import React, { useState } from "react";
 import Popup from "../popup/Popup";
 import AddMemberForm from "./addMemberForm";
-import useFetchMembers from "../../hooks/useGetAllCommittee";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 import useDeleteMember from "../../hooks/useDeleteMember";
+import useDeleteIhsas from "../../hooks/useDeleteIhsas";
+import useDeleteStaff from "../../hooks/useDeleteStaff";
 
-const MembersList = () => {
-  const { members, loading, error, fetchMembers } = useFetchMembers();
+const MembersList = ({ members, loading, error, fetchMembers, page }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [initialData, setInitialData] = useState(null);
-  const { deleteMember, isLoading } = useDeleteMember();
+  const { deleteMember, isLoading: load } = useDeleteMember();
+  const { deleteIhsas, isLoading: load1 } = useDeleteIhsas();
+  const { deleteStaff, isLoading: load2 } = useDeleteStaff();
 
   const arrayBufferToBase64 = (buffer) => {
     let binary = "";
@@ -49,8 +51,16 @@ const MembersList = () => {
     try {
       if (!member) return;
 
-      await deleteMember(member._id, member.position);
-      await fetchMembers(); // Refresh events list after deletion
+      if (page === "committee") {
+        await deleteMember(member._id, member.position);
+        await fetchMembers(); // Refresh events list after deletion
+      } else if (page === "ihsas") {
+        await deleteIhsas(member._id, member.position);
+        await fetchMembers(); // Refresh events list after deletion
+      } else if (page === "staffs") {
+        await deleteStaff(member._id, member.position);
+        await fetchMembers(); // Refresh events list after deletion
+      }
     } catch (error) {
       console.error("Error deleting event:", error);
       toast.error(`Error deleting event: ${error.message}`);
@@ -63,8 +73,8 @@ const MembersList = () => {
         <div className="flex flex-col items-center">
           <div className="mt-4 text-center">
             <div className="mx-auto mb-8 max-w-screen-sm">
-              <h2 className="text-4xl s-heading tracking-tight font-extrabold text-gray-900 dark:text-white">
-                Committee
+              <h2 className="text-4xl s-heading tracking-tight capitalize font-extrabold text-gray-900 dark:text-white">
+                {page}
               </h2>
               <div className="underline"></div>
             </div>
@@ -81,8 +91,8 @@ const MembersList = () => {
         </div>
         <div className="container relative flex flex-col text-gray-700 bg-white shadow-md w-full max-w-2xl mt-10 rounded-xl bg-clip-border">
           <div className="bg-gray-100 py-2 px-4 rounded-t-xl">
-            <h2 className="text-xl font-semibold text-gray-800">
-              All Committee Members
+            <h2 className="text-xl font-semibold capitalize text-gray-800">
+              All {page} Members
             </h2>
           </div>
           <nav className="flex flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
@@ -97,7 +107,7 @@ const MembersList = () => {
               <p>Error: {error}</p>
             ) : (
               members.length !== 0 &&
-              members[0].mainMembers.map((member) => (
+              members[0]?.mainMembers?.map((member) => (
                 <div
                   key={member._id} // Assuming each member has a unique _id field
                   className="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
@@ -168,7 +178,7 @@ const MembersList = () => {
               <p>Error: {error}</p>
             ) : (
               members.length !== 0 &&
-              members[0].members[0].members.map((member) => (
+              members[0]?.members[0]?.members?.map((member) => (
                 <div
                   key={member._id}
                   className="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
@@ -209,8 +219,10 @@ const MembersList = () => {
                         />
                       </svg>
                     </button>
-                    <button className="text-red-500 hover:text-red-700"
-                      onClick={() => handleRemoveMemberClick(member)}>
+                    <button
+                      className="text-red-500 hover:text-red-700"
+                      onClick={() => handleRemoveMemberClick(member)}
+                    >
                       <svg
                         fill="currentColor"
                         height="25px"
@@ -234,6 +246,7 @@ const MembersList = () => {
             initialData={initialData}
             onSubmit={fetchMembers}
             onClose={closePopup}
+            page={page}
           />
         </Popup>
       )}

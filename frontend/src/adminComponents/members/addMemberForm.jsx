@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import useAddMember from "../../hooks/useAddMember";
 import useUpdateMember from "../../hooks/useUpdateMember";
 import toast from "react-hot-toast";
+import useAddIhsas from "../../hooks/useAddIhsas";
+import useUpdateIhsas from "../../hooks/useUpdateIhsas";
+import useAddStaff from "../../hooks/useAddStaff";
+import useUpdateStaff from "../../hooks/useUpdateStaff";
 
-const AddMemberForm = ({ onClose, onSubmit, initialData }) => {
+const AddMemberForm = ({ onClose, onSubmit, initialData, page }) => {
   const [formData, setFormData] = useState({
     memberName: "",
     memberRole: "",
@@ -14,14 +18,36 @@ const AddMemberForm = ({ onClose, onSubmit, initialData }) => {
 
   const {
     addMember,
-    loading: addLoading,
-    error: addError,
+    loading: addCLoading,
+    error: addCError,
   } = useAddMember(onClose);
   const {
     updateMember,
-    loading: updateLoading,
-    error: updateError,
+    loading: updateCLoading,
+    error: updateCError,
   } = useUpdateMember(onClose);
+
+  const {
+    addStaff,
+    loading: addSLoading,
+    error: addSError,
+  } = useAddStaff(onClose);
+  const {
+    updateStaff,
+    loading: updateSLoading,
+    error: updateSError,
+  } = useUpdateStaff(onClose);
+
+  const {
+    addIhsas,
+    loading: addILoading,
+    error: addIError,
+  } = useAddIhsas(onClose);
+  const {
+    updateIhsas,
+    loading: updateILoading,
+    error: updateIError,
+  } = useUpdateIhsas(onClose);
 
   const arrayBufferToBase64 = (buffer) => {
     let binary = "";
@@ -31,7 +57,7 @@ const AddMemberForm = ({ onClose, onSubmit, initialData }) => {
       binary += String.fromCharCode(bytes[i]);
     }
     return window.btoa(binary);
-  }; 
+  };
 
   useEffect(() => {
     if (initialData) {
@@ -39,15 +65,16 @@ const AddMemberForm = ({ onClose, onSubmit, initialData }) => {
         memberName: initialData.name || "",
         memberRole: initialData.position || "",
         memberBio: initialData.bio || "",
-        memberPhoto: null,
+        memberPhoto: initialData.img?.data ? initialData.img : null,
         photoPreview: initialData.img?.data
           ? `data:image/jpeg;base64,${arrayBufferToBase64(
-            initialData.img.data
-          )}`
+              initialData.img.data
+            )}`
           : null,
       });
     }
   }, [initialData]);
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -96,25 +123,49 @@ const AddMemberForm = ({ onClose, onSubmit, initialData }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    
+  
     const formattedData = {
       memberName: capitalize(formData.memberName),
       memberRole: formatMemberRole(formData.memberRole),
       memberBio: capitalize(formData.memberBio),
-      memberPhoto: formData.memberPhoto,
     };
-
+  
     const data = new FormData();
     for (const key in formattedData) {
       data.append(key, formattedData[key]);
     }
-    if (initialData) {
-      await updateMember(initialData._id, data);
-    } else {
-      await addMember(data);
+    
+    // Append the memberPhoto only if it exists and is a File object
+    if (formData.memberPhoto && formData.memberPhoto instanceof File) {
+      data.append("memberPhoto", formData.memberPhoto);
     }
-    onSubmit();
+  
+    try {
+      if (initialData) {
+        if (page === "committee") {
+          await updateMember(initialData._id, data);
+        } else if (page === "ihsas") {
+          await updateIhsas(initialData._id, data);
+        } else if (page === "staffs") {
+          await updateStaff(initialData._id, data);
+        }
+      } else {
+        if (page === "committee") {
+          await addMember(data);
+        } else if (page === "ihsas") {
+          await addIhsas(data);
+        } else if (page === "staffs") {
+          await addStaff(data);
+        }
+      }
+      onSubmit();
+    } catch (error) {
+      console.error("Error updating/adding member:", error);
+      toast.error("Failed to update/add member. Please try again.");
+    }
   };
+  
+  
 
   return (
     <div className="flex h-full rounded-2xl bg-gray-200 items-center justify-center">
@@ -242,14 +293,16 @@ const AddMemberForm = ({ onClose, onSubmit, initialData }) => {
               >
                 Cancel
               </button>
-              {addError && <p className="text-red-500 mt-2">{addError}</p>}
-              {updateError && (
-                <p className="text-red-500 mt-2">{updateError}</p>
+              {addCError && <p className="text-red-500 mt-2">{addCError}</p>}
+              {updateCError && (
+                <p className="text-red-500 mt-2">{updateCError}</p>
               )}
               <button
                 type="submit"
                 className="w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2"
-                disabled={addLoading || updateLoading}
+                disabled={
+                  addCLoading || updateCLoading || addILoading || updateILoading
+                }
               >
                 {initialData ? "Update Member" : "Add Member"}
               </button>

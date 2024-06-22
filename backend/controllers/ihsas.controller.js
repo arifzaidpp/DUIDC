@@ -1,4 +1,4 @@
-import Committee from "../models/committee.model.js";
+import Committee from "../models/ihsas.model.js";
 
 // Function to add a member
 export const addMember = async (req, res) => {
@@ -26,7 +26,7 @@ export const addMember = async (req, res) => {
     if (!committee) {
       // If no committee document exists, create one
       committee = new Committee({
-        name: "Asasul Islam Sangam",
+        name: "IHSAs",
         mainMembers: [],
         members: [],
       });
