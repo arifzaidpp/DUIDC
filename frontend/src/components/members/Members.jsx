@@ -4,7 +4,7 @@ import MainMembers from "./MainMembers";
 import SubMembers from "./SubMembers";
 
 const Members = (data) => {
-
+console.log(data.data[0].mainMembers.length);
   const MPLength = data.data[0].mainMembers.length;
   return (
     <>
@@ -21,7 +21,7 @@ const Members = (data) => {
             </div>
             <div
               className={`grid gap-12 items-center ${
-                MPLength == 3 ? "md:grid-cols-3" : "md:grid-cols-2"
+                MPLength >= 3 ? "md:grid-cols-3" : "md:grid-cols-2"
               }`}
             >
               {data.data[0].mainMembers.map((data, i) => (

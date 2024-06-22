@@ -49,7 +49,12 @@ const EventsItems = () => {
   };
 
   const handleDeleteEvent = async (event) => {
-    alert("Are you sure you want to delete the event?");
+    const confirmed = window.confirm(`Are you sure you want to delete the event?`);
+  
+  if (!confirmed) {
+    return; // If not confirmed, exit function
+  }
+
     try {
       if (!event) return;
 
