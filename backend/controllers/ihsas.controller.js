@@ -1,9 +1,9 @@
-import Committee from "../models/ihsas.model.js";
+import Committe from "../models/ihsas.model.js";
 
 // Function to add a member
 export const addMember = async (req, res) => {
   try {
-    const { memberName, memberRole, memberBio } = req.body;
+    const { memberName, memberRole, Committee, memberBio } = req.body;
     const mainPositions = [
       "President",
       "Vice-President",
@@ -13,6 +13,8 @@ export const addMember = async (req, res) => {
     ];
     const imgBuffer = req.file.buffer;
 
+    console.log(req.body);
+
     const newMember = {
       name: memberName,
       position: memberRole,
@@ -21,28 +23,33 @@ export const addMember = async (req, res) => {
     };
 
     // Check if the committee document exists
-    let committee = await Committee.findOne();
+    let committee = await Committe.findOne();
 
     if (!committee) {
       // If no committee document exists, create one
-      committee = new Committee({
-        name: "IHSAs",
+      committee = new Committe({
+        name: "Ihsas",
         mainMembers: [],
         members: [],
       });
     }
 
-    if (mainPositions.includes(memberRole)) {
-      committee.mainMembers.push(newMember);
+    if (Committee === "Main Committee") {
+      if (mainPositions.includes(memberRole)) {
+        committee.mainMembers.push(newMember);
+      }
     } else {
       let membersGroup = committee.members.find(
-        (group) => group.name === "Members"
+        (group) => group.name === Committee
       );
       if (!membersGroup) {
-        membersGroup = { id: Date.now(), name: "Members", members: newMember };
+        membersGroup = { id: Date.now(), name: Committee, members: [newMember] };
         committee.members.push(membersGroup);
+        console.log("add Committee");
       }
+      console.log(membersGroup);
       membersGroup.members.push(newMember);
+      console.log(membersGroup);
     }
 
     await committee.save();
@@ -55,10 +62,11 @@ export const addMember = async (req, res) => {
   }
 };
 
+
 // Function to fetch all committee members
 export const getAllMembers = async (req, res) => {
   try {
-    const committee = await Committee.find(); // Fetching the single committee
+    const committee = await Committe.find(); // Fetching the single committee
     if (!committee) {
       return res.status(404).json({ message: "Committee not found" });
     }
@@ -74,14 +82,20 @@ export const getAllMembers = async (req, res) => {
 export const deleteMember = async (req, res) => {
   try {
     const { memberId, memberRole } = req.body;
-    const mainPositions = ['President', 'Vice-President', 'Secretary', 'Vice-Secretary', 'Treasurer'];
+    const mainPositions = [
+      "President",
+      "Vice-President",
+      "Secretary",
+      "Vice-Secretary",
+      "Treasurer",
+    ];
 
     let updatedCommittee = null;
     let memberDeleted = false;
 
     if (mainPositions.includes(memberRole)) {
-      updatedCommittee = await Committee.findOneAndUpdate(
-        { 'mainMembers._id': memberId },
+      updatedCommittee = await Committe.findOneAndUpdate(
+        { "mainMembers._id": memberId },
         {
           $pull: {
             mainMembers: { _id: memberId },
@@ -91,29 +105,31 @@ export const deleteMember = async (req, res) => {
       );
       memberDeleted = updatedCommittee !== null;
     } else {
-      updatedCommittee = await Committee.findOneAndUpdate(
-        { 'members.members._id': memberId },
+      updatedCommittee = await Committe.findOneAndUpdate(
+        { "members.members._id": memberId },
         {
           $pull: {
-            'members.$[outer].members': { _id: memberId },
+            "members.$[outer].members": { _id: memberId },
           },
         },
         {
           new: true,
-          arrayFilters: [{ 'outer.members._id': memberId }],
+          arrayFilters: [{ "outer.members._id": memberId }],
         }
       );
       memberDeleted = updatedCommittee !== null;
     }
 
     if (!memberDeleted) {
-      return res.status(404).json({ message: 'Member not found' });
+      return res.status(404).json({ message: "Member not found" });
     }
 
-    res.status(200).json({ message: 'Member deleted successfully' });
+    res.status(200).json({ message: "Member deleted successfully" });
   } catch (error) {
-    console.error('Error deleting member:', error);
-    res.status(500).json({ message: 'Error deleting member', error: error.message });
+    console.error("Error deleting member:", error);
+    res
+      .status(500)
+      .json({ message: "Error deleting member", error: error.message });
   }
 };
 
@@ -136,7 +152,7 @@ export const updateMember = async (req, res) => {
 
     // Attempt to update mainMembers first
     if (mainPositions.includes(memberRole)) {
-      updatedCommittee = await Committee.findOneAndUpdate(
+      updatedCommittee = await Committe.findOneAndUpdate(
         { "mainMembers._id": req.params.id },
         {
           $set: {
@@ -153,7 +169,7 @@ export const updateMember = async (req, res) => {
 
     // If not found in mainMembers, update in members array
     if (!memberUpdated) {
-      updatedCommittee = await Committee.findOneAndUpdate(
+      updatedCommittee = await Committe.findOneAndUpdate(
         { "members.members._id": req.params.id },
         {
           $set: {
