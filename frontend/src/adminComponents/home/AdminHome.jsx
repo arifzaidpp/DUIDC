@@ -1,16 +1,28 @@
 import React from "react";
-import "./AdminHome.css";
 import GalleryPhotos from "../../components/gallery/GalleryPhotos";
 import useFetchEvents from "../../hooks/useGetAllEvents";
 import useSubscribers from "../../hooks/useGetAllSubscribers";
 import usePageView from "../../hooks/usePageView";
+import useFetchData from "../../hooks/useGetAllContact";
+import toast from "react-hot-toast";
 
 const AdminHome = () => {
-  const { views, loading, error } = usePageView('home');
-  const { events } = useFetchEvents();
-  const { subscribers } = useSubscribers();
+  const { views } = usePageView("home");
+  const { data, loading: dataLoading, error: dataError } = useFetchData();
+  const {
+    events,
+    loading: eventsLoading,
+    error: eventsError,
+  } = useFetchEvents();
+  const {
+    subscribers,
+    loading: subLoading,
+    error: subError,
+  } = useSubscribers();
+
   const mapEvents = events.slice(-3);
-  const mapsub = subscribers.slice(-3);
+  const mapSubscribers = subscribers.slice(-3);
+  const mapMail = data?.slice(-3);
 
   const subCount = subscribers.length;
   const viewsCount = views / 2;
@@ -41,12 +53,18 @@ const AdminHome = () => {
     return `${hours12}:${minutes} ${period}`;
   }
 
+  if (dataError || eventsError || subError) {
+    toast.error("Failed to fetch data. Please try again later.");
+    console.error("Error fetching data:", dataError || eventsError || subError);
+  }
+
   return (
     <div className="p-4 md:ml-64">
       <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         <div className="grid xl:grid-cols-3 grid-cols-1 gap-4 mb-4">
+          {/* Total Views */}
           <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <div className="flex items-center bg-white  rounded-sm overflow-hidden ">
+            <div className="flex items-center bg-white rounded-sm overflow-hidden">
               <div className="p-4 bg-green-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +78,7 @@ const AdminHome = () => {
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                  ></path>
+                  />
                 </svg>
               </div>
               <div className="px-4 text-gray-700">
@@ -69,8 +87,10 @@ const AdminHome = () => {
               </div>
             </div>
           </div>
+
+          {/* Total Comments */}
           <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <div className="flex items-center bg-white  rounded-sm overflow-hidden ">
+            <div className="flex items-center bg-white rounded-sm overflow-hidden">
               <div className="p-4 bg-indigo-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +104,7 @@ const AdminHome = () => {
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
-                  ></path>
+                  />
                 </svg>
               </div>
               <div className="px-4 text-gray-700">
@@ -93,6 +113,8 @@ const AdminHome = () => {
               </div>
             </div>
           </div>
+
+          {/* Total Subscribes */}
           <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
             <div className="flex items-center bg-white  rounded-sm overflow-hidden ">
               <div className="p-4 bg-red-400">
@@ -128,6 +150,8 @@ const AdminHome = () => {
             </div>
           </div>
         </div>
+
+        {/* Inbox Section */}
         <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
           <link
             href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
@@ -167,6 +191,7 @@ const AdminHome = () => {
                         </li>
                       </ul>
                     </div>
+
                     <div className="tab-content" id="myTabContent">
                       <div
                         className="tab-pane fade active show"
@@ -178,43 +203,68 @@ const AdminHome = () => {
                           <div className="table-responsive">
                             <table className="table email-table no-wrap table-hover v-middle mb-0 font-14">
                               <tbody>
-                                <tr>
-                                  <td className="pl-3 md:table-cell hidden">
-                                    <div className="custom-control custom-checkbox">
-                                      <input
-                                        type="checkbox"
-                                        className="custom-control-input"
-                                        id="cst1"
-                                      />
-                                      <label
-                                        className="custom-control-label"
-                                        htmlFor="cst1"
-                                      >
-                                        &nbsp;
-                                      </label>
-                                    </div>
-                                  </td>
-                                  <td className="md:block hidden">
-                                    <i className="fa fa-star text-warning"></i>
-                                  </td>
-                                  <td>
-                                    <span className="mb-0 text-muted">
-                                      Hritik Roshan
-                                    </span>
-                                  </td>
-                                  <td>
-                                    <div className="link">
-                                      <span className="text-dark">
-                                        Lorem ipsum perspiciatis-
-                                      </span>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <i className="fa fa-paperclip text-muted"></i>
-                                  </td>
+                                {dataLoading ? (
+                                  <tr>
+                                    <td colSpan="6" className="text-center">
+                                      Loading...
+                                    </td>
+                                  </tr>
+                                ) : dataError ? (
+                                  <tr>
+                                    <td
+                                      colSpan="6"
+                                      className="text-center text-red-500"
+                                    >
+                                      Error fetching emails. Please try again.
+                                    </td>
+                                  </tr>
+                                ) : (
+                                  mapMail?.map((item) => (
+                                    <tr key={item._id}>
+                                      <td className="pl-3 md:table-cell hidden">
+                                        <div className="custom-control custom-checkbox">
+                                          <input
+                                            type="checkbox"
+                                            className="custom-control-input"
+                                            id={`checkbox-${item._id}`}
+                                          />
+                                          <label
+                                            className="custom-control-label"
+                                            htmlFor={`checkbox-${item._id}`}
+                                          >
+                                            &nbsp;
+                                          </label>
+                                        </div>
+                                      </td>
+                                      <td className="md:block hidden">
+                                        <i className="fa fa-star text-warning"></i>
+                                      </td>
+                                      <td>
+                                        <span className="mb-0 text-muted">
+                                          {item.name}
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <div className="link">
+                                          <span className="text-dark">
+                                            {item.subject}{" "}
+                                          </span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <i className="fa fa-paperclip text-muted"></i>
+                                      </td>
 
-                                  <td className="text-muted">May 13</td>
-                                </tr>
+                                      <td className="text-muted">
+                                        {item.createdAt
+                                          ? new Date(
+                                              item.createdAt
+                                            ).toLocaleDateString()
+                                          : ""}
+                                      </td>
+                                    </tr>
+                                  ))
+                                )}
                               </tbody>
                             </table>
                           </div>
@@ -227,8 +277,11 @@ const AdminHome = () => {
             </div>
           </div>
         </div>
+
+        {/* Other Sections */}
         <div className="grid grid-cols-2 gap-4 mb-4">
-          <div className=" self-center justify-center rounded bg-gray-50 h-auto max-h-96 dark:bg-gray-800">
+          {/* New Subscribers */}
+          <div className="self-center justify-center rounded bg-gray-50 h-auto max-h-96 dark:bg-gray-800">
             <a
               href="/admin/subscribers"
               className="no-underline hover:no-underline hover:text-inherit text-inherit"
@@ -240,26 +293,41 @@ const AdminHome = () => {
                   </h2>
                 </div>
                 <ul className="divide-y divide-gray-200 mb-0">
-                  {mapsub.map((subscriber, index) => (
-                    <li key={index} className="flex items-center py-4 px-6">
+                  {subLoading ? (
+                    <li className="flex items-center py-4 px-6">
                       <span className="text-gray-700 text-lg font-medium mr-4">
-                        {index + 1}.
+                        Loading...
                       </span>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-medium text-gray-800">
-                          <span
-                          className="no-underline hover:no-underline text-inherit">
-                            {subscriber.email}
-                          </span>
-                        </h3>
-                      </div>
                     </li>
-                  ))}
+                  ) : subError ? (
+                    <li className="flex items-center py-4 px-6">
+                      <span className="text-red-500 text-lg font-medium mr-4">
+                        Error fetching subscribers. Please try again.
+                      </span>
+                    </li>
+                  ) : (
+                    mapSubscribers.map((subscriber, index) => (
+                      <li key={index} className="flex items-center py-4 px-6">
+                        <span className="text-gray-700 text-lg font-medium mr-4">
+                          {index + 1}.
+                        </span>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-medium text-gray-800">
+                            <span className="no-underline hover:no-underline text-inherit">
+                              {subscriber.email}
+                            </span>
+                          </h3>
+                        </div>
+                      </li>
+                    ))
+                  )}
                 </ul>
               </div>
             </a>
           </div>
-          <div className=" self-center justify-center rounded bg-gray-50 h-auto max-h-96 dark:bg-gray-800">
+
+          {/* New Events */}
+          <div className="self-center justify-center rounded bg-gray-50 h-auto max-h-96 dark:bg-gray-800">
             <div className="bg-white shadow-md rounded-md my-6 overflow-hidden max-w-xl mx-auto">
               <a
                 href="/admin/events"
@@ -271,41 +339,52 @@ const AdminHome = () => {
                   </h2>
                 </div>
 
-                {mapEvents
-                  .slice()
-                  .reverse()
-                  .map((event) => (
-                    <div key={event._id} className="w-3/3">
-                      <div className="bg-white shadow-lg rounded-lg p-3 flex">
-                        <img
-                          src={`data:image/jpeg;base64,${arrayBufferToBase64(
-                            event.image.data
-                          )}`}
-                          alt="Map 1"
-                          className="w-14 h-14 object-cover rounded-lg mr-4"
-                        />
-                        <div>
-                          <div className="items-center">
-                            <h2 className="text-xl font-semibold">
-                              {event.eventName}
-                            </h2>
-                          </div>
-                          <div className="grid grid-cols-2">
-                            <p className="mb-0">
-                              Start at: {convertTo12Hour(event.eventStartTime)}
-                            </p>
-                            <p className="ml-4 mb-0">
-                              End at: {convertTo12Hour(event.eventEndTime)}
-                            </p>
+                {eventsLoading ? (
+                  <div className="text-center py-4">Loading events...</div>
+                ) : eventsError ? (
+                  <div className="text-center py-4 text-red-500">
+                    Error fetching events. Please try again.
+                  </div>
+                ) : (
+                  mapEvents
+                    .slice()
+                    .reverse()
+                    .map((event) => (
+                      <div key={event._id} className="w-3/3">
+                        <div className="bg-white shadow-lg rounded-lg p-3 flex">
+                          <img
+                            src={`data:image/jpeg;base64,${arrayBufferToBase64(
+                              event.image.data
+                            )}`}
+                            alt="Event Thumbnail"
+                            className="w-14 h-14 object-cover rounded-lg mr-4"
+                          />
+                          <div>
+                            <div className="items-center">
+                              <h2 className="text-xl font-semibold">
+                                {event.eventName}
+                              </h2>
+                            </div>
+                            <div className="grid grid-cols-2">
+                              <p className="mb-0">
+                                Start at:{" "}
+                                {convertTo12Hour(event.eventStartTime)}
+                              </p>
+                              <p className="ml-4 mb-0">
+                                End at: {convertTo12Hour(event.eventEndTime)}
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                )}
               </a>
             </div>
           </div>
         </div>
+
+        {/* Gallery Section */}
         <div className="items-center justify-center h-auto mb-4 pt-1 rounded bg-gray-50 dark:bg-gray-800">
           <a
             href="/admin/gallery"
