@@ -62,7 +62,9 @@
   max-width: 690px;
   margin-left: auto;
   margin-right: auto;
+  display: block !important; /* Ensure the element is displayed */
 }
+
 
 .ad-content:before {
   content: "";
@@ -165,14 +167,4 @@
   .ad-content {
     padding: 35px 25px 40px;
   }
-}
-
-section.admission .ad-content {
-  display: block !important;
-}
-section.admission .ad-content::after {
-  display: block !important;
-}
-section.admission .ad-content::before {
-  display: block !important;
 }
