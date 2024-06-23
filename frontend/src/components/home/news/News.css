@@ -182,9 +182,6 @@
   .nu-item-img {
     max-height: 94% !important;
   }
-  .grid.grid-rows-2.grid-flow-col.gap-7 {
-    margin-top: -10rem;
-  }
   figcaption.nu-ss-details.relative.max-w-90.text-lg.bottom-32 {
     bottom: 5rem !important;
   }
@@ -196,9 +193,6 @@
   }
   .news-update {
     max-height: 85rem;
-  }
-  .grid.grid-rows-2.grid-flow-col.gap-7 {
-    margin-top: 0rem;
   }
 }
 
@@ -217,9 +211,6 @@
   }
   .nu-sub-item-img {
     max-height: 90% !important;
-  }
-  .grid.grid-rows-2.grid-flow-col.gap-7 {
-    margin-top: 0rem;
   }
   figure.nu-ss-main.relative.transition-all.duration-300.cursor-pointer {
     margin-top: 10px !important;
