@@ -19,15 +19,15 @@ function Admission() {
         ref={domRef}
       >
         <div className="admission-wrap">
-          <div className="ad-content">
-            <div className="ad-data">
-              <div className="ad-heading-wrap">
-                <h3 className="ad-heading text-4xl s:text-lg m:text-2xl l:text-3xl x:text-4xl">
+          <div className="admission-content">
+            <div className="admission-data">
+              <div className="admission-heading-wrap">
+                <h3 className="admission-heading text-4xl s:text-lg m:text-2xl l:text-3xl x:text-4xl">
                   Apply for Admissions
                 </h3>
               </div>
-              <div className="ad-heading-divider"></div>
-              <div className="ad-description-wrap">
+              <div className="admission-heading-divider"></div>
+              <div className="admission-description-wrap">
                 <p>
                   At Darul Uloom College we don’t expect intelligence to come in
                   any particular shape or form. We’re looking for future
@@ -35,11 +35,11 @@ function Admission() {
                   determined to grow.
                 </p>
               </div>
-              <div className="ad-hero-btns">
+              <div className="admission-hero-btns">
                 <a href="https://dhiu.in/secondary-1.html">
                   <button
                     type="button"
-                    className="ad-red rounded-none p-5 focus:outline-none text-white font-medium text-sm px-5 py-2.5 me-2 mb-2"
+                    className="admission-red rounded-none p-5 focus:outline-none text-white font-medium text-sm px-5 py-2.5 me-2 mb-2"
                   >
                     Apply now
                     <span className="button-icon">
