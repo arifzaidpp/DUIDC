@@ -45,7 +45,7 @@ function AboutBanner() {
                 </div>
               </div>
             </div>
-            <div className=" a-right grid grid-rows-2 grid-flow-col gap-7">
+            <div className=" a-right grid grid-rows-2 mt-0 grid-flow-col gap-7">
               <WhyDuidc/>
               <Students/>
             </div>
