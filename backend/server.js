@@ -12,6 +12,8 @@ import committeeRoutes from "./routes/committee.routes.js";
 import ihsasRoutes from "./routes/ihsas.routes.js";
 import staffRoutes from "./routes/staff.routes.js";
 import departmentRoutes from "./routes/department.routes.js";
+import subscribeRoutes from "./routes/subscribe.routes.js";
+import pageViewRoutes from './routes/pageView.routes.js';
 
 
 
@@ -39,6 +41,8 @@ app.use("/api/committee", committeeRoutes);
 app.use("/api/ihsas", ihsasRoutes);
 app.use("/api/staff", staffRoutes);
 app.use("/api/department", departmentRoutes);
+app.use("/api/subscribe", subscribeRoutes);
+app.use('/api/views', pageViewRoutes);
 
 
 app.use(express.static(path.join(__dirname,"/frontend/dist")))

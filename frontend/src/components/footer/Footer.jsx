@@ -1,7 +1,17 @@
 import React from "react";
 import "./Footer.css";
+import useSubscription from "../../hooks/useAddSubscriber";
 
 function Footer() {
+  const { email, setEmail, loading, error, subscribe } = useSubscription();
+
+  const handleInputChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubscribe = () => {
+    subscribe();
+  };
   return (
     <>
       <footer className="foot-footer bg-gray-900">
@@ -18,14 +28,18 @@ function Footer() {
                   placeholder="Your e-mail"
                   name="email"
                   autoComplete="@gmail.com"
+                  value={email}
+                  onChange={handleInputChange}
                 />
               </div>
               <div className="ft-hero-btns">
                 <button
                   type="button"
                   className="ev-red rounded-none p-5 focus:outline-none text-white font-medium text-sm px-5 py-2.5 me-2 mb-2"
+                  onClick={handleSubscribe}
+            disabled={loading || !email.trim()}
                 >
-                  <span className="sub-txt">Subscribe</span>
+                  <span className="sub-txt">{loading ? 'Subscribing...' : 'Subscribe'}</span>
                   <span className="ft-button-icon">
                     <i className="fas fa-long-arrow-right"></i>
                   </span>
@@ -83,7 +97,7 @@ function Footer() {
                 <ul className=" foot-sub-p text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
                     <a href="/committee" className="hover:underline ">
-                    Committee
+                      Committee
                     </a>
                   </li>
                   <li className="mb-4">
@@ -98,12 +112,12 @@ function Footer() {
                   </li>
                   <li className="mb-4">
                     <a href="/department" className="hover:underline ">
-                    Department
+                      Department
                     </a>
                   </li>
                   <li className="mb-4">
                     <a href="/gallery" className="hover:underline ">
-                     Gallery
+                      Gallery
                     </a>
                   </li>
                 </ul>

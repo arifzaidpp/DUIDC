@@ -1,8 +1,46 @@
 import React from "react";
 import "./AdminHome.css";
 import GalleryPhotos from "../../components/gallery/GalleryPhotos";
+import useFetchEvents from "../../hooks/useGetAllEvents";
+import useSubscribers from "../../hooks/useGetAllSubscribers";
+import usePageView from "../../hooks/usePageView";
 
 const AdminHome = () => {
+  const { views, loading, error } = usePageView('home');
+  const { events } = useFetchEvents();
+  const { subscribers } = useSubscribers();
+  const mapEvents = events.slice(-3);
+  const mapsub = subscribers.slice(-3);
+
+  const subCount = subscribers.length;
+  const viewsCount = views / 2;
+
+  const arrayBufferToBase64 = (buffer) => {
+    let binary = "";
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  };
+
+  function convertTo12Hour(time24) {
+    const [hours, minutes] = time24.split(":");
+    let period = "AM";
+    let hours12 = parseInt(hours, 10);
+    if (hours12 >= 12) {
+      period = "PM";
+      if (hours12 > 12) {
+        hours12 -= 12;
+      }
+    }
+    if (hours12 === 0) {
+      hours12 = 12;
+    }
+    return `${hours12}:${minutes} ${period}`;
+  }
+
   return (
     <div className="p-4 md:ml-64">
       <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
@@ -27,7 +65,7 @@ const AdminHome = () => {
               </div>
               <div className="px-4 text-gray-700">
                 <h3 className="text-sm tracking-wider">Total Views</h3>
-                <p className="text-3xl">12,768</p>
+                <p className="text-3xl">{viewsCount}</p>
               </div>
             </div>
           </div>
@@ -85,7 +123,7 @@ const AdminHome = () => {
               </div>
               <div className="px-4 text-gray-700">
                 <h3 className="text-sm tracking-wider">Total Subscribes</h3>
-                <p className="text-3xl">34.12%</p>
+                <p className="text-3xl">{subCount}</p>
               </div>
             </div>
           </div>
@@ -202,21 +240,21 @@ const AdminHome = () => {
                   </h2>
                 </div>
                 <ul className="divide-y divide-gray-200 mb-0">
-                  <li className="flex items-center py-4 px-6">
-                    <span className="text-gray-700 text-lg font-medium mr-4">
-                      1.
-                    </span>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-medium text-gray-800">
-                        <div
-                          href="mailto:"
-                          className="no-underline hover:no-underline text-inherit"
-                        >
-                          someone@gmail.com
-                        </div>
-                      </h3>
-                    </div>
-                  </li>
+                  {mapsub.map((subscriber, index) => (
+                    <li key={index} className="flex items-center py-4 px-6">
+                      <span className="text-gray-700 text-lg font-medium mr-4">
+                        {index + 1}.
+                      </span>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-medium text-gray-800">
+                          <span
+                          className="no-underline hover:no-underline text-inherit">
+                            {subscriber.email}
+                          </span>
+                        </h3>
+                      </div>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </a>
@@ -233,24 +271,37 @@ const AdminHome = () => {
                   </h2>
                 </div>
 
-                <div className="w-3/3">
-                  <div className="bg-white shadow-lg rounded-lg p-3 flex">
-                    <img
-                      src="https://steamuserimages-a.akamaihd.net/ugc/938339513171723292/84874C0CBCEA963A99EA9656FF85C5AF0719E420/"
-                      alt="Map 1"
-                      className="w-14 h-14 object-cover rounded-lg mr-4"
-                    />
-                    <div>
-                      <div className="items-center">
-                        <h2 className="text-xl font-semibold">Server 1</h2>
-                      </div>
-                      <div className="grid grid-cols-2">
-                        <p className="mb-0">Server IP: 123.456.789.1</p>
-                        <p className="ml-4 mb-0">Players Online: 24/32</p>
+                {mapEvents
+                  .slice()
+                  .reverse()
+                  .map((event) => (
+                    <div key={event._id} className="w-3/3">
+                      <div className="bg-white shadow-lg rounded-lg p-3 flex">
+                        <img
+                          src={`data:image/jpeg;base64,${arrayBufferToBase64(
+                            event.image.data
+                          )}`}
+                          alt="Map 1"
+                          className="w-14 h-14 object-cover rounded-lg mr-4"
+                        />
+                        <div>
+                          <div className="items-center">
+                            <h2 className="text-xl font-semibold">
+                              {event.eventName}
+                            </h2>
+                          </div>
+                          <div className="grid grid-cols-2">
+                            <p className="mb-0">
+                              Start at: {convertTo12Hour(event.eventStartTime)}
+                            </p>
+                            <p className="ml-4 mb-0">
+                              End at: {convertTo12Hour(event.eventEndTime)}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  ))}
               </a>
             </div>
           </div>
