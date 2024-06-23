@@ -1,34 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
+import useContactForm from "../../hooks/useContactForm";
 
 const ContactForm = () => {
+  const { loading, error, success, submitForm } = useContactForm();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateEmail(formData.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
+    await submitForm(formData);
+    setFormData({ name: "", email: "", subject: "", message: "" });
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   return (
     <>
       <section className="bg-gray-50 dark:bg-gray-900">
-        <div className="py-20 bg-gray-50 pt-14">
-          <div className="mx-auto px-6 md:px-12 xl:px-32">
-            <div className="mb-16 text-center">
-              <div className="mx-auto mb-8 max-w-screen-sm lg:mb-16">
-                <h2 className="text-4xl s-heading tracking-tight font-extrabold text-gray-900 dark:text-white">
-                  Contact Us
-                </h2>
-                <div className="underline"></div>
-              </div>
-            </div>
-            <div className="my-6">
-              <div className="max-w-6xl mx-auto bg-[#2e0249] rounded-lg">
-                <div className="grid md:grid-cols-2 items-center gap-16 sm:p-10 p-4 font-[sans-serif]">
-                  <div>
-                    <h1 className="text-4xl font-extrabold text-white">
-                      Get in Touch
-                    </h1>
-                    <p className="text-sm text-gray-400 mt-3">
-                      Have some big idea or brand to develop and need help? Then
-                      reach out we'd love to hear about your project and provide
-                      help.
-                    </p>
-                    <ul className="mt-12 space-y-8">
-                      <li className="flex items-center">
-                        <svg
+       <div className="py-20 bg-gray-50 pt-14">
+         <div className="mx-auto px-6 md:px-12 xl:px-32">
+           <div className="mb-16 text-center">
+             <div className="mx-auto mb-8 max-w-screen-sm lg:mb-16">
+               <h2 className="text-4xl s-heading tracking-tight font-extrabold text-gray-900 dark:text-white">
+                 Contact Us
+               </h2>
+               <div className="underline"></div>
+             </div>
+           </div>
+           <div className="my-6">
+             <div className="max-w-6xl mx-auto bg-[#2e0249] rounded-lg">
+               <div className="grid md:grid-cols-2 items-center gap-16 sm:p-10 p-4 font-[sans-serif]">
+                 <div>
+                   <h1 className="text-4xl font-extrabold text-white">
+                     Get in Touch
+                   </h1>
+                   <p className="text-sm text-gray-400 mt-3">
+                     Have some big idea or brand to develop and need help? Then
+                     reach out we'd love to hear about your project and provide
+                     help.
+                   </p>
+                   <ul className="mt-12 space-y-8">
+                     <li className="flex items-center">
+                       <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16px"
                           height="16px"
@@ -132,30 +165,47 @@ const ContactForm = () => {
                     </ul>
                   </div>
                   <div className="bg-gray-200 p-6 rounded-lg">
-                    <form className="mt-8 space-y-4">
+                    <form className="mt-8 space-y-4" onSubmit={handleSubmit}>
                       <input
                         type="text"
+                        name="name"
                         placeholder="Name"
+                        value={formData.name}
+                        onChange={handleChange}
                         className="w-full rounded-md py-3 px-4 text-sm outline-[#a91079]"
+                        required
                       />
                       <input
                         type="email"
+                        name="email"
                         placeholder="Email"
+                        value={formData.email}
+                        onChange={handleChange}
                         className="w-full rounded-md py-3 px-4 text-sm outline-[#a91079]"
+                        required
                       />
                       <input
                         type="text"
+                        name="subject"
                         placeholder="Subject"
+                        value={formData.subject}
+                        onChange={handleChange}
                         className="w-full rounded-md py-3 px-4 text-sm outline-[#a91079]"
+                        required
                       />
                       <textarea
+                        name="message"
                         placeholder="Message"
                         rows="6"
+                        value={formData.message}
+                        onChange={handleChange}
                         className="w-full rounded-md px-4 text-sm pt-3 outline-[#a91079]"
+                        required
                       ></textarea>
                       <button
-                        type="button"
+                        type="submit"
                         className="text-white bg-[#a91079] hover:bg-[#a91079e2] font-semibold rounded-md text-sm px-4 py-3 flex items-center justify-center w-full"
+                        disabled={loading}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -172,8 +222,10 @@ const ContactForm = () => {
                             data-original="#000000"
                           />
                         </svg>
-                        Send Message
+                        {loading ? 'Sending...' : 'Send Message'}
                       </button>
+                      {error && <p className="text-red-500 mt-4">{error}</p>}
+                      {success && <p className="text-green-500 mt-4">Message sent successfully!</p>}
                     </form>
                   </div>
                 </div>

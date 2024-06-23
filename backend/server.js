@@ -14,6 +14,7 @@ import staffRoutes from "./routes/staff.routes.js";
 import departmentRoutes from "./routes/department.routes.js";
 import subscribeRoutes from "./routes/subscribe.routes.js";
 import pageViewRoutes from './routes/pageView.routes.js';
+import contactRoutes from './routes/contact.routes.js';
 
 
 
@@ -43,6 +44,7 @@ app.use("/api/staff", staffRoutes);
 app.use("/api/department", departmentRoutes);
 app.use("/api/subscribe", subscribeRoutes);
 app.use('/api/views', pageViewRoutes);
+app.use('/api/contact', contactRoutes);
 
 
 app.use(express.static(path.join(__dirname,"/frontend/dist")))
