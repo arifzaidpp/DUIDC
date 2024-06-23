@@ -113,7 +113,6 @@ export const deleteMember = async (req, res) => {
 
 // Function to update a member by ID
 export const updateMember = async (req, res) => {
-    console.log(req.body); // Log the request body for debugging
     try {
       const { memberName, memberRole, memberBio } = req.body;
       const mainPositions = ["Principal", "Vice-Principal"];

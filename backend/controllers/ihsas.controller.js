@@ -13,8 +13,6 @@ export const addMember = async (req, res) => {
     ];
     const imgBuffer = req.file.buffer;
 
-    console.log(req.body);
-
     const newMember = {
       name: memberName,
       position: memberRole,
@@ -45,11 +43,8 @@ export const addMember = async (req, res) => {
       if (!membersGroup) {
         membersGroup = { id: Date.now(), name: Committee, members: [newMember] };
         committee.members.push(membersGroup);
-        console.log("add Committee");
       }
-      console.log(membersGroup);
       membersGroup.members.push(newMember);
-      console.log(membersGroup);
     }
 
     await committee.save();
@@ -135,7 +130,6 @@ export const deleteMember = async (req, res) => {
 
 // Function to update a member by ID
 export const updateMember = async (req, res) => {
-  console.log(req.body); // Log the request body for debugging
   try {
     const { memberName, memberRole, memberBio } = req.body;
     const mainPositions = [

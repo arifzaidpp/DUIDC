@@ -15,7 +15,6 @@ const Committee = () => {
               <p>Error: {error}</p>
             ) : ( members.length !== 0 ? (
         <>
-        {console.log(members)}
           <Members data={members} />
         </>
      ) : ("") ) }
