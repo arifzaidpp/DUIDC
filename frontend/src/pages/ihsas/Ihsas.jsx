@@ -2,79 +2,23 @@ import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import Members from "../../components/members/Members";
+import useFetchIhsas from "../../hooks/useGetAllIhsas";
 
 const Ihsas = () => {
-  const ihsah = [
-    {
-      id: 1,
-      name: "Ihsas",
-      mainMembers: [
-        {
-          name: "John Doe",
-          position: "President",
-          img: "https://tailus.io/sources/blocks/classic/preview/images/man.jpg",
-        },
-        {
-          name: "Alice Smith",
-          position: "Secretary",
-          img: "https://tailus.io/sources/blocks/classic/preview/images/man.jpg",
-        },
-        {
-          name: "Robert Johnson",
-          position: "Treasurer",
-          img: "https://tailus.io/sources/blocks/classic/preview/images/man.jpg",
-        },
-      ],
-      members: [
-        {
-          id: 101,
-          name: "Arabic Wing",
-          members: [
-            {
-              name: "Emily Brown",
-              position: "Member",
-              img: "https://tailus.io/sources/blocks/classic/preview/images/man.jpg",
-            },
-            {
-              name: "Michael Lee",
-              position: "Member",
-              img: "https://tailus.io/sources/blocks/classic/preview/images/man.jpg",
-            },
-            {
-              name: "Grace Wang",
-              position: "Member",
-              img: "https://tailus.io/sources/blocks/classic/preview/images/man.jpg",
-            },
-          ],
-        },
-        {
-          id: 102,
-          name: "Urdu Wing",
-          members: [
-            {
-              name: "Daniel Garcia",
-              position: "Member",
-              img: "https://tailus.io/sources/blocks/classic/preview/images/man.jpg",
-            },
-            {
-              name: "Sophia Kim",
-              position: "Member",
-              img: "https://tailus.io/sources/blocks/classic/preview/images/man.jpg",
-            },
-            {
-              name: "Liam Patel",
-              position: "Member",
-              img: "https://tailus.io/sources/blocks/classic/preview/images/man.jpg",
-            },
-          ],
-        },
-      ],
-    },
-  ];
+  const { members, loading, error, fetchDepartment } = useFetchIhsas();
   return (
     <>
       <Navbar />
-      <Members data={ihsah} />
+      {loading && members.length === 0 ? (
+              <p>Loading...</p>
+            ) : error && members.length === 0 ? (
+              <p>Error: {error}</p>
+            ) : ( members.length !== 0 ? (
+        <>
+        {console.log(members)}
+          <Members data={members} />
+        </>
+     ) : ("") ) }
       <Footer />
     </>
   );
