@@ -6,6 +6,8 @@ import useAddIhsas from "../../hooks/useAddIhsas";
 import useUpdateIhsas from "../../hooks/useUpdateIhsas";
 import useAddStaff from "../../hooks/useAddStaff";
 import useUpdateStaff from "../../hooks/useUpdateStaff";
+import useAddDepartment from "../../hooks/useAddDepartment";
+import useUpdateDepartment from "../../hooks/useUpdateDepartment";
 
 const AddMemberForm = ({ onClose, onSubmit, initialData, page }) => {
   const [formData, setFormData] = useState({
@@ -26,6 +28,17 @@ const AddMemberForm = ({ onClose, onSubmit, initialData, page }) => {
     loading: updateCLoading,
     error: updateCError,
   } = useUpdateMember(onClose);
+
+  const {
+    addDepartment,
+    loading: addDLoading,
+    error: addDError,
+  } = useAddDepartment(onClose);
+  const {
+    updateDepartment,
+    loading: updateDLoading,
+    error: updateDError,
+  } = useUpdateDepartment(onClose);
 
   const {
     addStaff,
@@ -148,6 +161,8 @@ const AddMemberForm = ({ onClose, onSubmit, initialData, page }) => {
           await updateIhsas(initialData._id, data);
         } else if (page === "staffs") {
           await updateStaff(initialData._id, data);
+        } else if (page === "department") {
+          await updateDepartment(initialData._id, data);
         }
       } else {
         if (page === "committee") {
@@ -156,6 +171,8 @@ const AddMemberForm = ({ onClose, onSubmit, initialData, page }) => {
           await addIhsas(data);
         } else if (page === "staffs") {
           await addStaff(data);
+        } else if (page === "department") {
+          await addDepartment(data);
         }
       }
       onSubmit();

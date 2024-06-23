@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import useDeleteMember from "../../hooks/useDeleteMember";
 import useDeleteIhsas from "../../hooks/useDeleteIhsas";
 import useDeleteStaff from "../../hooks/useDeleteStaff";
+import useDeleteDepartment from "../../hooks/useDeleteDepartment";
 
 const MembersList = ({ members, loading, error, fetchMembers, page }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -14,6 +15,7 @@ const MembersList = ({ members, loading, error, fetchMembers, page }) => {
   const { deleteMember, isLoading: load } = useDeleteMember();
   const { deleteIhsas, isLoading: load1 } = useDeleteIhsas();
   const { deleteStaff, isLoading: load2 } = useDeleteStaff();
+  const { deleteDepartment, isLoading: load3 } = useDeleteDepartment();
 
   const arrayBufferToBase64 = (buffer) => {
     let binary = "";
@@ -59,6 +61,9 @@ const MembersList = ({ members, loading, error, fetchMembers, page }) => {
         await fetchMembers(); // Refresh events list after deletion
       } else if (page === "staffs") {
         await deleteStaff(member._id, member.position);
+        await fetchMembers(); // Refresh events list after deletion
+      } else if (page === "department") {
+        await deleteDepartment(member._id, member.position);
         await fetchMembers(); // Refresh events list after deletion
       }
     } catch (error) {
