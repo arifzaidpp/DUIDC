@@ -32,24 +32,24 @@ export const createContact = async (req, res) => {
   }
 };
 
+export const deleteContacts = async (req, res) => {
+  const { contactIds } = req.body;
 
-export const deleteContactById = async (req, res) => {
-    const contactId = req.params.id;
-  
-    if (!contactId) {
-      return res.status(400).json({ error: 'Contact ID is required' });
+  if (!contactIds || !Array.isArray(contactIds)) {
+    return res.status(400).json({ error: 'Invalid request body. Expected an array of contactIds.' });
+  }
+
+  try {
+    // Use $in operator to delete multiple contacts by their IDs
+    const deletedContacts = await Contact.deleteMany({ _id: { $in: contactIds } });
+
+    if (!deletedContacts || deletedContacts.deletedCount === 0) {
+      return res.status(404).json({ error: 'Contacts not found' });
     }
-  
-    try {
-      const deletedContact = await Contact.findByIdAndDelete(contactId);
-  
-      if (!deletedContact) {
-        return res.status(404).json({ error: 'Contact not found' });
-      }
-  
-      res.json({ message: 'Contact deleted successfully' });
-    } catch (error) {
-      console.error('Error deleting contact:', error);
-      res.status(500).json({ error: 'Failed to delete contact' });
-    }
-  };
+
+    res.json({ message: 'Contacts deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting contacts:', error);
+    res.status(500).json({ error: 'Failed to delete contacts' });
+  }
+};

@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useFetchData from "../../hooks/useGetAllContact";
+import useDeleteContact from "../../hooks/useDeleteContact";
 import "./InboxItem.css";
 
 const InboxItems = () => {
-  const { data, loading, error } = useFetchData();
+  const { data, loading, error, fetchData } = useFetchData();
+  const {
+    deleteContactById,
+    loading: deleteLoading,
+    error: deleteError,
+  } = useDeleteContact();
+  const [selectedEmails, setSelectedEmails] = useState([]); // State to track selected emails
   const [selectedEmail, setSelectedEmail] = useState(null); // State to track selected email
+
+  useEffect(() => {
+    // Reset selectedEmails when data changes
+    setSelectedEmails([]);
+  }, [data]);
 
   if (loading) {
     return <div>Loading...</div>; // Handle loading state
@@ -22,9 +34,27 @@ const InboxItems = () => {
     return `${month} ${day}`;
   };
 
+  // Handle click on an email checkbox to select it
+  const handleEmailCheckboxChange = (emailId) => {
+    if (selectedEmails.includes(emailId)) {
+      setSelectedEmails(selectedEmails.filter((id) => id !== emailId));
+    } else {
+      setSelectedEmails([...selectedEmails, emailId]);
+    }
+  };
+
   // Handle click on an email to select and display details
   const handleEmailClick = (email) => {
     setSelectedEmail(email);
+  };
+
+  // Handle click on "Delete" button to delete selected emails
+  const handleDeleteSelectedEmails = async () => {
+    const success = await deleteContactById(selectedEmails);
+    if (success) {
+      await fetchData();
+      setSelectedEmail(null); // Reset selected email after deletion
+    }
   };
 
   // Handle click on "Go Back" button to return to email list
@@ -35,7 +65,6 @@ const InboxItems = () => {
   // Render selected email details or list view based on selection
   const renderEmailDetails = () => {
     if (selectedEmail) {
-      console.log(selectedEmail);
       return (
         <div className="card mb-3">
           <div className="card-body">
@@ -72,17 +101,20 @@ const InboxItems = () => {
           <div className="row p-4 no-gutters align-items-center">
             <div className="col-sm-12 col-md-6">
               <h4 className="font-light mb-0">
-                <i className="ti-email mr-2"></i>{data?.length} Total mails
+                <i className="ti-email mr-2"></i>
+                {data?.length} Total mails
               </h4>
             </div>
             <div className="col-sm-12 col-md-6 d-flex justify-content-end">
               <ul className="list-inline dl mb-0">
                 <li className="list-inline-item text-danger">
-                  <a href="#">
-                    <button className="btn btn-circle btn-danger text-white">
-                      <i className="fa fa-trash"></i>
-                    </button>
-                  </a>
+                  <button
+                    className="btn btn-circle btn-danger text-white"
+                    onClick={handleDeleteSelectedEmails}
+                    disabled={selectedEmails.length === 0}
+                  >
+                    <i className="fa fa-trash"></i>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -90,78 +122,80 @@ const InboxItems = () => {
 
           {/* Responsive layout for small screens */}
           <div className="table-responsive d-md-none">
-            {data &&
-              data.map((email) => (
-                <div key={email._id} className="card" onClick={() => handleEmailClick(email)}>
-                  <div className="card-body py-1">
-                    <div className="custom-control custom-checkbox d-flex align-items-center">
-                      <input
-                        type="checkbox"
-                        className="custom-control-input"
-                        id={`checkbox-${email._id}`}
-                      />
-                      <label
-                        className="custom-control-label flex-grow-1"
-                        htmlFor={`checkbox-${email._id}`}
-                      >
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div>
-                            <span className="text-muted">{email.name}</span>
-                            <br />
-                            <span className="text-dark">{email.subject}</span>
-                          </div>
-                          <div className="text-muted">
-                            {formatCreatedAtDate(email.createdAt)}
-                          </div>
+            {data?.map((email) => (
+              <div key={email._id} className="card">
+                <div className="card-body py-1">
+                  <div className="custom-control custom-checkbox d-flex align-items-center">
+                    <input
+                      type="checkbox"
+                      className="custom-control-input"
+                      id={`checkbox-${email._id}-small`}
+                      checked={selectedEmails.includes(email._id)}
+                      onChange={() => handleEmailCheckboxChange(email._id)}
+                    />
+                    <label
+                      className="custom-control-label flex-grow-1"
+                      htmlFor={`checkbox-${email._id}`}
+                    >
+                      <div className="d-flex justify-content-between align-items-center">
+                        <div>
+                          <span className="text-muted">{email.name}</span>
+                          <br />
+                          <span className="text-dark">{email.subject}</span>
                         </div>
-                      </label>
-                    </div>
+                        <div className="text-muted">
+                          {formatCreatedAtDate(email.createdAt)}
+                        </div>
+                      </div>
+                    </label>
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
 
           {/* Table view for medium screens and above */}
           <div className="table-responsive d-none d-md-block">
             <table className="table email-table no-wrap table-hover v-middle mb-0 font-14">
               <tbody>
-                {data &&
-                  data.map((email) => (
-                    <tr key={email._id} onClick={() => handleEmailClick(email)}>
-                      <td className="pl-3">
-                        <div className="custom-control custom-checkbox">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id={`checkbox-${email._id}`}
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor={`checkbox-${email._id}`}
-                          >
-                            &nbsp;
-                          </label>
-                        </div>
-                      </td>
-                      <td className="d-none d-md-table-cell">
-                        <i className="fa fa-star text-warning"></i>
-                      </td>
-                      <td>
-                        <span className="mb-0 text-muted">{email.name}</span>
-                      </td>
-                      <td>
-                        <a className="link" href="#">
-                          <span className="text-dark">{email.subject}</span>
-                        </a>
-                      </td>
-                      <td>
-                        <i className="fa fa-paperclip text-muted"></i>
-                      </td>
-                      <td className="text-muted">
-                        {formatCreatedAtDate(email.createdAt)}
-                      </td>
-                    </tr>
-                  ))}
+                {data?.map((email) => (
+                  <tr key={email._id}>
+                    <td className="pl-3">
+                      <div className="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          className="custom-control-input"
+                          id={`checkbox-${email._id}`}
+                          checked={selectedEmails.includes(email._id)}
+                          onChange={() => handleEmailCheckboxChange(email._id)}
+                        />
+                        <label
+                          className="custom-control-label"
+                          htmlFor={`checkbox-${email._id}`}
+                        >
+                          &nbsp;
+                        </label>
+                      </div>
+                    </td>
+                    <td onClick={() => handleEmailClick(email)} className="d-none d-md-table-cell">
+                      <i className="fa fa-star text-warning"></i>
+                    </td>
+                    <td onClick={() => handleEmailClick(email)}>
+                      <span className="mb-0 text-muted">{email.name}</span>
+                    </td>
+                    <td onClick={() => handleEmailClick(email)}>
+                      <a className="link" href="#">
+                        <span className="text-dark">{email.subject}</span>
+                      </a>
+                    </td>
+                    <td onClick={() => handleEmailClick(email)}>
+                      <i className="fa fa-paperclip text-muted"></i>
+                    </td>
+                    <td onClick={() => handleEmailClick(email)} className="text-muted">
+                      {formatCreatedAtDate(email.createdAt)}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

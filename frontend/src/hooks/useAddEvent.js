@@ -45,7 +45,6 @@ const useAddEvent = (onClose) => {
       window.location.href = '/admin/events';
       onClose();
     } catch (err) {
-      console.log(err.message);
       toast.error(err.message);
       setError(err.message);
     } finally {
