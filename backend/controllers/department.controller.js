@@ -7,9 +7,16 @@ export const addMember = async (req, res) => {
     const mainPositions = [
       "President",
       "Vice-President",
-      "Secretary",
-      "Vice-Secretary",
+      "General-Secretary",
+      "Finance-Secretary",
       "Treasurer",
+      "Joint-Secretary",
+      "Office-Secretary",
+      "Auditor",
+      "Pro",
+      "Sub-Auditor",
+      "Sub.auditor",
+      "Sub.Auditor",
     ];
     const imgBuffer = req.file.buffer;
 
@@ -74,7 +81,18 @@ export const getAllMembers = async (req, res) => {
 export const deleteMember = async (req, res) => {
   try {
     const { memberId, memberRole } = req.body;
-    const mainPositions = ['President', 'Vice-President', 'Secretary', 'Vice-Secretary', 'Treasurer'];
+    const mainPositions = ["President",
+      "Vice-President",
+      "General-Secretary",
+      "Finance-Secretary",
+      "Treasurer",
+      "Joint-Secretary",
+      "Office-Secretary",
+      "Auditor",
+      "Pro",
+      "Sub-Auditor",
+      "Sub.auditor",
+      "Sub.Auditor",];
 
     let updatedCommittee = null;
     let memberDeleted = false;
@@ -124,9 +142,16 @@ export const updateMember = async (req, res) => {
     const mainPositions = [
       "President",
       "Vice-President",
-      "Secretary",
-      "Vice-Secretary",
+      "General-Secretary",
+      "Finance-Secretary",
       "Treasurer",
+      "Joint-Secretary",
+      "Office-Secretary",
+      "Auditor",
+      "Pro",
+      "Sub-Auditor",
+      "Sub.auditor",
+      "Sub.Auditor",
     ];
     const imgBuffer = req.file?.buffer;
 

@@ -22,9 +22,22 @@ const AddMemberForm = ({ onClose, onSubmit, initialData, page }) => {
 
   const committees = [
     "Main Committee",
+    "Linguistic Hub",
+    "English Wing",
+    "Malayalam Wing",
+    "Foreign Academy",
+    "SAB",
+    "Media",
+    "SRDB",
+    "Academic Wing",
+    "Editorial Board",
+    "Library Wing",
     "Urdu Wing",
     "Arabic Wing",
-    "Language Wing",
+    "PKV",
+    "Science and Maths",
+    "IT Wing",
+    "Art Hub",
     "Other",
   ];
 
