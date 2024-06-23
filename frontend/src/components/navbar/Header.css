@@ -307,7 +307,7 @@ z-index: 999;
 }
 
 .side-menu{
-  background-image: url("./2.jpg");
+  background-image: url("/2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
