@@ -13,6 +13,7 @@
 }
 
 /* Animation */
+
 .fade-in-section {
   opacity: 0;
   transform: translateY(4vh);
@@ -164,4 +165,8 @@
   .ad-content {
     padding: 35px 25px 40px;
   }
+}
+
+section.admission .ad-content {
+  display: block !important;
 }
