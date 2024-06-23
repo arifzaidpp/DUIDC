@@ -25,7 +25,7 @@ const AdminHome = () => {
   const mapMail = data?.slice(-3);
 
   const subCount = subscribers.length;
-  const viewsCount = views / 2;
+  const viewsCount = views;
 
   const arrayBufferToBase64 = (buffer) => {
     let binary = "";
