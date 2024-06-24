@@ -5,7 +5,7 @@ import "../../js/Header.js";
 const Header = () => {
   return (
     <div className="bg-white h-28 n-main items-center z-50">
-      <nav
+      <div
         id="nav"
         className="navbar bg-white border-gray-200 dark:bg-gray-900 items-center"
       >
@@ -95,7 +95,7 @@ const Header = () => {
             </div>
           </div>
 
-          
+
           <div
             id="drawer-navigation"
             className="fixed lg:hidden side-menu top-0 right-0-i z-40 w-64 h-screen overflow-y-auto transition-transform translate-x-full bg-white dark:bg-gray-800"
@@ -428,7 +428,7 @@ const Header = () => {
             </ul>
           </div>
         </div>
-      </nav>
+      </div>
     </div>
   );
 };

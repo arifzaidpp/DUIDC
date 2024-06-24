@@ -3,7 +3,7 @@ import "./HeaderBottom.css";
 
 const HeaderBottom = () => {
     return (
-        <nav
+        <div
             className="navBot hidden lg:block dark:bg-gray-900 items-center text-center content-center  w-full z-20 top-0 start-0 border-gray-200 dark:border-gray-600"
             style={{ backgroundColor: "#9d2235" }}
         >
@@ -120,7 +120,7 @@ const HeaderBottom = () => {
                     </ul>
                 </div>
             </div>
-        </nav>
+        </div>
     );
 };
 
