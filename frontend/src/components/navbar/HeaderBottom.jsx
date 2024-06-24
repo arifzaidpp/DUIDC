@@ -10,7 +10,6 @@ const HeaderBottom = () => {
             <div className="max-w-fit text-center content-center items-center p-3 inline-flex">
                 <div
                     className="items-center text-center content-center flex md:w-auto"
-                    id="navbar-search"
                 >
                     <ul className="flex p-0 mt-0 font-medium items-center border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse flex-row md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
