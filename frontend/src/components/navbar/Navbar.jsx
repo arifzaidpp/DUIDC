@@ -9,7 +9,6 @@ const Navbar = () => {
 
       <Header />
       <HeaderBottom />
-      <script src="../../js/Header.js"></script>
     </nav>
     </>
   );
