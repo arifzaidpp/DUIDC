@@ -1,11 +1,9 @@
 import React from "react";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 import "./Header.css";
 import "../../js/Header.js";
 
 const Header = () => {
   return (
-    <HelmetProvider>
       <div className="bg-white h-28 n-main items-center z-50">
         <nav
           id="nav"
@@ -463,11 +461,6 @@ const Header = () => {
           </div>
         </nav>
       </div>
-      <Helmet>
-        <script src="https://flowbite.com/docs/flowbite.min.js"></script>
-        <script src="https://flowbite.com/docs/datepicker.min.js"></script>
-      </Helmet>
-    </HelmetProvider>
   );
 };
 
