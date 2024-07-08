@@ -20,8 +20,7 @@ const Banner = () => {
         >
           <div className="hero-text">
             <h1 className="hero-h1">
-              Explore Your <mark>Potential</mark> & <mark>Talents</mark> in
-              DUIDC
+            Welcome to <mark> Darul Uloom Islamic Da'wa</mark> College!
             </h1>
           </div>
           <div className="hero-btns">
@@ -39,7 +38,7 @@ const Banner = () => {
                   type="button"
                   className="white rounded-none p-5 focus:outline-none text-white font-medium text-sm px-5 py-2.5 me-2 mb-2"
                 >
-                  Request info
+                  Contact Us
                 </button>
               </a>
             </div>

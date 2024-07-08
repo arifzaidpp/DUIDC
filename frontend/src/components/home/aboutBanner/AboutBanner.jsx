@@ -2,6 +2,7 @@ import React from "react";
 import "./AboutBanner.css";
 import WhyDuidc from "./WhyDuidc";
 import Students from "./Students";
+import PrincipalMessege from "../principal-messege/PrincipalMessege";
 
 function AboutBanner() {
   const [isVisible, setVisible] = React.useState(true);
@@ -23,24 +24,26 @@ function AboutBanner() {
           <div className="a-b grid lg:grid-cols-2 gap-7">
             <div className="content">
               <div className="data">
-                <div className="heading-wrap">
+              <div className="heading-wrap">
                   <h3 className="heading text-4xl s:text-lg m:text-2xl l:text-3xl x:text-4xl">
-                    Welcome to Darul Uloom College!
+                    Our Vision
                   </h3>
                 </div>
                 <div className="heading-divider"></div>
                 <div className="description-wrap">
                   <p>
-                    At the heart of all we do is a shared intellectual curiosity
-                    and a common commitment to academic excellence. But UniCamp
-                    is also known for its warm and energetic sense of community.
+                  To be a leading educational institution commited to propagate Islam all over the world.
                   </p>
+                </div>
+                <div className="heading-wrap">
+                  <h3 className="heading text-4xl s:text-lg m:text-2xl l:text-3xl x:text-4xl">
+                    Our Mission
+                  </h3>
+                </div>
+                <div className="heading-divider"></div>
+                <div className="description-wrap">
                   <p>
-                    UniCamp is as varied in its people as it is in the
-                    architecture and we love the stimulating diversity of both.
-                    Being home to many talented, energetic students and
-                    academics also generates its own creative and expanding
-                    projects.
+                  Ordaining a scholarship with high-quality Islamic education through Moral Training (Tarbiyah) and effective Teaching (Ta'lim) capable to propagate Islam by sophisticated means.
                   </p>
                 </div>
               </div>
@@ -50,6 +53,7 @@ function AboutBanner() {
               <Students/>
             </div>
           </div>
+          <PrincipalMessege/>
         </div>
       </div>
     </section>

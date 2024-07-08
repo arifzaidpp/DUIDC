@@ -501,9 +501,14 @@ const AboutPage = () => {
                   </div>
                   <div className="col-lg-6 col-12">
                     <div className="about-five-content">
-                      <h6 className="small-title text-lg">OUR STORY</h6>
+                      <h6 className="small-title text-lg">
+                        Darul Uloom Islamic Da'wa College, Thootha
+                      </h6>
                       <h2 className="main-title fw-bold">
-                        Our team comes with the experience and knowledge
+                        Affiliated to: Darul Huda Islamic University, Kerala,
+                        India.
+                        <br />
+                        Run by: Assasul Islam Sangam, Thootha
                       </h2>
                       <div className="about-five-tab">
                         <nav>
@@ -522,7 +527,7 @@ const AboutPage = () => {
                               aria-controls="nav-who"
                               aria-selected="true"
                             >
-                              Who We Are
+                              Our Vision
                             </button>
                             <button
                               className="nav-link"
@@ -534,19 +539,7 @@ const AboutPage = () => {
                               aria-controls="nav-vision"
                               aria-selected="false"
                             >
-                              our Vision
-                            </button>
-                            <button
-                              className="nav-link"
-                              id="nav-history-tab"
-                              data-bs-toggle="tab"
-                              data-bs-target="#nav-history"
-                              type="button"
-                              role="tab"
-                              aria-controls="nav-history"
-                              aria-selected="false"
-                            >
-                              our History
+                              Our Mission
                             </button>
                           </div>
                         </nav>
@@ -558,17 +551,8 @@ const AboutPage = () => {
                             aria-labelledby="nav-who-tab"
                           >
                             <p>
-                              It is a long established fact that a reader will
-                              be distracted by the readable content of a page
-                              when looking at its layout. The point of using
-                              Lorem Ipsum is that it has a more-or-less normal
-                              distribution of letters, look like readable
-                              English.
-                            </p>
-                            <p>
-                              There are many variations of passages of Lorem
-                              Ipsum available, but the majority have in some
-                              form, by injected humour.
+                            To be a leading educational institution commited to propagate Islam all over the world.
+
                             </p>
                           </div>
                           <div
@@ -578,17 +562,7 @@ const AboutPage = () => {
                             aria-labelledby="nav-vision-tab"
                           >
                             <p>
-                              It is a long established fact that a reader will
-                              be distracted by the readable content of a page
-                              when looking at its layout. The point of using
-                              Lorem Ipsum is that it has a more-or-less normal
-                              distribution of letters, look like readable
-                              English.
-                            </p>
-                            <p>
-                              There are many variations of passages of Lorem
-                              Ipsum available, but the majority have in some
-                              form, by injected humour.
+                            Ordaining a scholarship with high-quality Islamic education through Moral Training (Tarbiyah) and effective Teaching (Ta'lim) capable to propagate Islam by sophisticated means.
                             </p>
                           </div>
                           <div

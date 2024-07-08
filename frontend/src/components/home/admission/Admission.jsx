@@ -29,10 +29,7 @@ function Admission() {
               <div className="admission-heading-divider"></div>
               <div className="admission-description-wrap">
                 <p>
-                  At Darul Uloom College we don’t expect intelligence to come in
-                  any particular shape or form. We’re looking for future
-                  students who are inquisitive, passionate, original and
-                  determined to grow.
+                DHIU enrolls only intelligent and talented students aged below 11½ who have completed/ are completing their five-year primary education provided at formal schools and recognized local Madrasas. Admission to the university campus/ affiliated colleges is based only on merit and intellectual potential of students that are evaluated through standard oral and written entrance tests. This is because, DHIU believes that only bright and intelligent students will be capable to pursue the extensive curricula adopted by DHIU. The calls for applications are made in the Arabic month of Sha’ban every year, while the entrance tests are held in the first week of Shawwal. The University offers a continuous stream of twelve-year course, starting from Secondary until Post Graduation. Therefore, it does not allow fresh admissions to higher levels.
                 </p>
               </div>
               <div className="admission-hero-btns">
