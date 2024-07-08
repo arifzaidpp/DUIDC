@@ -20,7 +20,7 @@ const Banner = () => {
         >
           <div className="hero-text">
             <h1 className="hero-h1">
-            Welcome to <mark> Darul Uloom Islamic Da'wa</mark> College!
+            Welcome to <mark> Darul Uloom Islamic Da'wa</mark> College
             </h1>
           </div>
           <div className="hero-btns">
