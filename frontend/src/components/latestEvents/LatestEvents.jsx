@@ -66,8 +66,6 @@ const LatestEvents = ({ home, events }) => {
     return `${hours12}:${minutes} ${period}`;
   };
 
-  const first = events.length - 1;
-
   return (
     <section className="events">
       <div className="container mx-auto">
@@ -103,7 +101,7 @@ const LatestEvents = ({ home, events }) => {
                             onClick={() =>
                               openImagePopup(
                                 `data:image/jpeg;base64,${arrayBufferToBase64(
-                                  events[first].image.data
+                                  events[0].image.data
                                 )}`
                               )
                             }
@@ -111,13 +109,13 @@ const LatestEvents = ({ home, events }) => {
                             <img
                               className="transition duration-900 ease-in-out object-cover group-hover:scale-110 w-full h-96"
                               src={`data:image/jpeg;base64,${arrayBufferToBase64(
-                                events[first].image.data
+                                events[0].image.data
                               )}`}
-                              alt={events[first].eventName}
+                              alt={events[0].eventName}
                               onClick={() =>
                                 openImagePopup(
                                   `data:image/jpeg;base64,${arrayBufferToBase64(
-                                    events[first].image.data
+                                    events[0].image.data
                                   )}`
                                 )
                               }
@@ -127,17 +125,17 @@ const LatestEvents = ({ home, events }) => {
                         <figcaption className="absolute bottom-0 left-0 right-0 p-8 custom-gradient text-white transition duration-900 ease-in-out">
                           <div className="event-start-date mb-2">
                             <span className="bg-red-800 px-2 py-1 text-base text-white font-semibold uppercase w-20 inline-block">
-                              {formatEventDate(events[first].eventDate)}
+                              {formatEventDate(events[0].eventDate)}
                             </span>
                           </div>
                           <h3 className="event-title text-4xl p-2 font-medium truncate">
-                            {events[first].eventName}
+                            {events[0].eventName}
                           </h3>
                           <div className="event-meta mt-2 text-sm">
                             <div className="event-time">
                               {`${convertTo12Hour(
-                                events[first].eventStartTime
-                              )} - ${convertTo12Hour(events[first].eventEndTime)}`}
+                                events[0].eventStartTime
+                              )} - ${convertTo12Hour(events[0].eventEndTime)}`}
                             </div>
                           </div>
                         </figcaption>
@@ -148,7 +146,7 @@ const LatestEvents = ({ home, events }) => {
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Render additional events if there are more than 1 */}
                     {events.length >= 2 &&
-                      events.slice(0, -1).slice(0, 2).reverse().map((event, index) => (
+                      events.slice(1, 3).map((event, index) => (
                         <div
                           key={index}
                           className={`fade-in-section ${

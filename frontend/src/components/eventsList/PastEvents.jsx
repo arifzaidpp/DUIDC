@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import EventListItem from "./EventListItem";
 
-const EventsList = ({ events }) => {
+const PastEvents = ({ events }) => {
   const [isVisible, setVisible] = React.useState(false);
   const domRef = React.useRef(null);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
@@ -43,13 +43,28 @@ const EventsList = ({ events }) => {
             ref={domRef}
           >
             <div className="ev-data">
+              <div className="ev-heading-wrap">
+                <h3 className="ev-heading font-bold text-3xl sm:text-base md:text-lg lg:text-2xl xl:text-3xl">
+                  Past Events
+                </h3>
+              </div>
+
+              <div className="ev-heading-divider mb-4 -mt-2">
+                <span className="inline-block w-40 h-[2px] bg-red-800"></span>
+              </div>
               <div className="evLi-body">
                 <div className="grid lg:grid-cols-1 gap-6">
                   <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {events.length > 0 ? (
-                      events.slice().map((event, index) => (
-                        <EventListItem key={index} event={event} openImagePopup={openImagePopup} />
-                      ))
+                      events
+                        .slice()
+                        .map((event, index) => (
+                          <EventListItem
+                            key={index}
+                            event={event}
+                            openImagePopup={openImagePopup}
+                          />
+                        ))
                     ) : (
                       <div>No additional events available</div>
                     )}
@@ -59,6 +74,7 @@ const EventsList = ({ events }) => {
             </div>
           </div>
         </div>
+        <div className="spacer"></div>
       </div>
       {isImagePopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[9999]">
@@ -81,4 +97,4 @@ const EventsList = ({ events }) => {
   );
 };
 
-export default EventsList;
+export default PastEvents;

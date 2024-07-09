@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import AddEventForm from '../addEventForm/AddEventForm';
-import Popup from '../../adminComponents/popup/Popup';
-import toast from 'react-hot-toast';
-import useFetchEvents from '../../hooks/useGetAllEvents';
-import useDeleteEvent from '../../hooks/useDeleteEvent';
+import React, { useState } from "react";
+import AddEventForm from "../addEventForm/AddEventForm";
+import Popup from "../../adminComponents/popup/Popup";
+import toast from "react-hot-toast";
+import useFetchEvents from "../../hooks/useGetAllEvents";
+import useDeleteEvent from "../../hooks/useDeleteEvent";
 
 const EventsItems = () => {
   const [isAddEventOpen, setIsAddEventOpen] = useState(false);
   const [eventToEdit, setEventToEdit] = useState(null);
   const [eventToDelete, setEventToDelete] = useState(null);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
-  const [popupImageSrc, setPopupImageSrc] = useState('');
-  const { events, loading, error, fetchEvents } = useFetchEvents();
+  const [popupImageSrc, setPopupImageSrc] = useState("");
+  const { events, pastEvents, loading, error, fetchEvents } = useFetchEvents();
   const { deleteEvent, isLoading } = useDeleteEvent();
 
   const arrayBufferToBase64 = (buffer) => {
-    let binary = '';
+    let binary = "";
     const bytes = new Uint8Array(buffer);
     const len = bytes.byteLength;
     for (let i = 0; i < len; i++) {
@@ -45,15 +45,17 @@ const EventsItems = () => {
 
   const closeImagePopup = () => {
     setIsImagePopupOpen(false);
-    setPopupImageSrc('');
+    setPopupImageSrc("");
   };
 
   const handleDeleteEvent = async (event) => {
-    const confirmed = window.confirm(`Are you sure you want to delete the event?`);
-  
-  if (!confirmed) {
-    return; // If not confirmed, exit function
-  }
+    const confirmed = window.confirm(
+      `Are you sure you want to delete the event?`
+    );
+
+    if (!confirmed) {
+      return; // If not confirmed, exit function
+    }
 
     try {
       if (!event) return;
@@ -61,7 +63,7 @@ const EventsItems = () => {
       await deleteEvent(event._id);
       await fetchEvents(); // Refresh events list after deletion
     } catch (error) {
-      console.error('Error deleting event:', error);
+      console.error("Error deleting event:", error);
       toast.error(`Error deleting event: ${error.message}`);
     }
   };
@@ -128,7 +130,7 @@ const EventsItems = () => {
                 </div>
               </div>
             ) : (
-              events.slice().reverse().map((event) => (
+              events.slice().map((event) => (
                 <div
                   key={event._id}
                   className="event-card bg-white shadow-lg rounded-lg p-4 mb-4 flex flex-col md:flex-row items-center"
@@ -140,7 +142,13 @@ const EventsItems = () => {
                       )}`}
                       alt={event.eventName}
                       className="w-full h-auto max-h-60 object-cover rounded-lg cursor-pointer"
-                      onClick={() => openImagePopup(`data:image/jpeg;base64,${arrayBufferToBase64(event.image.data)}`)}
+                      onClick={() =>
+                        openImagePopup(
+                          `data:image/jpeg;base64,${arrayBufferToBase64(
+                            event.image.data
+                          )}`
+                        )
+                      }
                     />
                   </div>
                   <div className="md:order-2 w-full md:w-2/3">
@@ -177,14 +185,101 @@ const EventsItems = () => {
                 </div>
               ))
             )}
-            {!loading && events.length === 0 && (
+
+            <div className=" mt-16 mb-8 max-w-screen-sm lg:mb-8">
+              <h2 className="text-3xl s-heading tracking-tight font-extrabold text-gray-900 dark:text-white">
+                Past Events
+              </h2>
+              <div className="underline"></div>
+            </div>
+
+            {loading && pastEvents.length === 0 ? (
+              <div className="bg-white shadow-lg rounded-lg p-4 mb-4 flex">
+                <div className="flex flex-wrap items-center gap-8 animate-pulse">
+                  <div className="grid bg-gray-300 rounded-lg h-36 w-36 place-items-center"></div>
+                  <div className="w-max">
+                    <div className="block w-56 h-3 mb-4 font-sans text-5xl antialiased font-semibold leading-tight tracking-normal bg-gray-300 rounded-full text-inherit">
+                      &nbsp;
+                    </div>
+                    {[...Array(5)].map((_, index) => (
+                      <div
+                        key={index}
+                        className="block h-2 mb-2 font-sans text-base antialiased font-light leading-relaxed bg-gray-300 rounded-full text-inherit w-72"
+                      >
+                        &nbsp;
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              pastEvents.slice().map((event) => (
+                <div
+                  key={event._id}
+                  className="event-card bg-white shadow-lg rounded-lg p-4 mb-4 flex flex-col md:flex-row items-center"
+                >
+                  <div className="md:order-1 w-full md:w-1/3 md:mr-4 mb-4 md:mb-0">
+                    <img
+                      src={`data:image/jpeg;base64,${arrayBufferToBase64(
+                        event.image.data
+                      )}`}
+                      alt={event.eventName}
+                      className="w-full h-auto max-h-60 object-cover rounded-lg cursor-pointer"
+                      onClick={() =>
+                        openImagePopup(
+                          `data:image/jpeg;base64,${arrayBufferToBase64(
+                            event.image.data
+                          )}`
+                        )
+                      }
+                    />
+                  </div>
+                  <div className="md:order-2 w-full md:w-2/3">
+                    <h2 className="text-xl font-semibold mb-2 md:mb-4">
+                      {event.eventName}
+                    </h2>
+                    <p className="mb-2">{event.eventDescription}</p>
+                    <div className="text-sm text-gray-600">
+                      <p>
+                        <span className="font-semibold">Date:</span>{" "}
+                        {new Date(event.eventDate).toLocaleDateString()}
+                      </p>
+                      <p>
+                        <span className="font-semibold">Time:</span>{" "}
+                        {convertTo12Hour(event.eventStartTime)} -{" "}
+                        {convertTo12Hour(event.eventEndTime)}
+                      </p>
+                    </div>
+                    <div className="flex gap-2 mt-2">
+                      <button
+                        className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                        onClick={() => handleDeleteEvent(event)}
+                      >
+                        Delete Event
+                      </button>
+                      <button
+                        className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                        onClick={() => openEditEventPopup(event)}
+                      >
+                        Edit Event
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
+            {!loading && events.length === 0 && pastEvents.length === 0 && (
               <p className="text-center text-gray-500">No events found.</p>
             )}
           </div>
         </div>
       </div>
       <Popup isOpen={isAddEventOpen} onClose={closeAddEventPopup}>
-        <AddEventForm onClose={closeAddEventPopup} onSubmit={fetchEvents} initialData={eventToEdit} />
+        <AddEventForm
+          onClose={closeAddEventPopup}
+          onSubmit={fetchEvents}
+          initialData={eventToEdit}
+        />
       </Popup>
       {isImagePopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
@@ -195,7 +290,11 @@ const EventsItems = () => {
             >
               ✖️
             </button>
-            <img src={popupImageSrc} alt="Event Full Size" className="max-w-full max-h-screen" />
+            <img
+              src={popupImageSrc}
+              alt="Event Full Size"
+              className="max-w-full max-h-screen"
+            />
           </div>
         </div>
       )}

@@ -4,15 +4,18 @@ import Footer from "../../components/footer/Footer";
 import EventsList from "../../components/eventsList/EventsList";
 import LatestEvents from "../../components/latestEvents/LatestEvents";
 import useFetchEvents from "../../hooks/useGetAllEvents";
+import PastEvents from "../../components/eventsList/PastEvents";
 
 const Events = () => {
   const [isVisible, setVisible] = React.useState(false);
-  const { events, loading, error } = useFetchEvents();
+  const { events, pastEvents, loading, error } = useFetchEvents();
+  console.log(pastEvents);
 
   React.useEffect(() => {
     setVisible(true);
   }, []);
 
+  // console.log(events);
   // Skeleton component for each event item
  
 
@@ -91,8 +94,9 @@ const Events = () => {
       {error && <p>Error: {error}</p>}
       {!loading && !error && (
         <>
-          <LatestEvents events={events.slice(-3)} />
-          <EventsList events={events.slice(0, -3)} />
+          <LatestEvents events={events.slice(0,3)} />
+          <EventsList events={events.slice(3)} />
+          <PastEvents events={pastEvents}/>
         </>
       )}
       <Footer />
