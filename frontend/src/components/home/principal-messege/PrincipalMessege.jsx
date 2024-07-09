@@ -16,6 +16,9 @@ const PrincipalMessege = () => {
             <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">
             Principal's Message
             </h2>
+            <div className="ev-heading-divider mb-2 -mt-2">
+                <span className="inline-block w-60 h-[3px] bg-red-800"></span>
+              </div>
             <p className="text-md mt-4">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
               placeat assumenda nam veritatis, magni doloremque pariatur quos
