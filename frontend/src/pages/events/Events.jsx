@@ -9,13 +9,11 @@ import PastEvents from "../../components/eventsList/PastEvents";
 const Events = () => {
   const [isVisible, setVisible] = React.useState(false);
   const { events, pastEvents, loading, error } = useFetchEvents();
-  console.log(pastEvents);
 
   React.useEffect(() => {
     setVisible(true);
   }, []);
 
-  // console.log(events);
   // Skeleton component for each event item
  
 

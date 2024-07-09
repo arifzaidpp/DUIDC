@@ -45,9 +45,6 @@ const useFetchEvents = () => {
       // Sort past events based on the date and time nearest to the present date and time
       pastEventsList.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
 
-      console.log(futureEventsList);
-      console.log(pastEventsList);
-
       setEvents(futureEventsList);
       setPastEvents(pastEventsList);
       setLoading(false);
