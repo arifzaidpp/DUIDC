@@ -45,7 +45,7 @@ const PastEvents = ({ events }) => {
             <div className="ev-data">
               <div className="ev-heading-wrap">
                 <h3 className="ev-heading font-bold text-3xl sm:text-base md:text-lg lg:text-2xl xl:text-3xl">
-                  Past Events
+                Previous Events
                 </h3>
               </div>
 
