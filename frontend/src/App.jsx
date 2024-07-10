@@ -7,8 +7,8 @@ import Staff from "./pages/staff/Staff";
 import Gallery from "./pages/gallery/Gallery";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
-import Post from "./pages/blogs/Blogs";
-import Blogs from "./pages/blogs/BlogsTest";
+// import Post from "./pages/blogs/Blogs";
+// import Blogs from "./pages/blogs/BlogsTest";
 import Ihsas from "./pages/ihsas/Ihsas";
 import Events from "./pages/events/Events";
 import UnderMaintenance from "./pages/underMaintenance/UnderMaintenance";
@@ -23,6 +23,7 @@ import DepartmentList from "./pages/admin/DepartmentList";
 import GalleryImg from "./pages/admin/GalleryImg";
 import EventLists from "./pages/admin/EventLists";
 import Login from "./pages/login/Login";
+import Blogs from "./pages/blogs/Blogs";
 import { useAuthContext } from "./context/AuthContext";
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />}/>
         <Route path="/department" element={<Department/>}/>
         <Route path="/post" element={<UnderMaintenance />}/>
-        <Route path="/blogs" element={<UnderMaintenance />}/>
+        <Route path="/blogs" element={<Blogs />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/contact" element={<Contact />}/>
         <Route path="/events" element={<Events />}/>
