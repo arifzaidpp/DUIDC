@@ -123,7 +123,6 @@ const Header = () => {
             </div>
             <button
               type="button"
-              data-drawer-hide="drawer-navigation"
               className="text-gray-400 z-10 bg-transparent blk hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-4 end-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
               onClick={closeSideMenu} // Close the side menu on click
             >

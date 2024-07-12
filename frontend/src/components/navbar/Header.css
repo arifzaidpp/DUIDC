@@ -9,6 +9,19 @@
 }
 
 
+.side-menu {
+  transition: transform 0.3s ease;
+}
+
+.translate-x-full {
+  transform: translateX(100%);
+}
+
+.translate-x-0 {
+  transform: translateX(0);
+}
+
+
 
 .head-item{
   color: #696969;
