@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import "../../js/Header.js";
 
 const Header = () => {
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+
+  const toggleSideMenu = () => {
+    setIsSideMenuOpen(!isSideMenuOpen);
+  };
+
+  const closeSideMenu = () => {
+    setIsSideMenuOpen(false); // Close the side menu
+  };
   return (
     <div className="bg-white h-28 n-main items-center z-50">
       <div
@@ -85,20 +94,20 @@ const Header = () => {
               <button
                 className="inline-flex items-center p-2 ml-3 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 type="button"
-                data-drawer-target="drawer-navigation"
-                data-drawer-show="drawer-navigation"
+                onClick={toggleSideMenu}
                 aria-controls="drawer-navigation"
-                aria-expanded="false"
+                aria-expanded={isSideMenuOpen ? "true" : "false"}
               >
                 <img src="/menu-icon.svg" alt="" />
               </button>
             </div>
           </div>
 
-
           <div
             id="drawer-navigation"
-            className="fixed lg:hidden side-menu top-0 right-0-i z-40 w-64 h-screen overflow-y-auto transition-transform translate-x-full bg-white dark:bg-gray-800"
+            className={`fixed lg:hidden side-menu top-0 right-0 z-40 w-64 h-screen overflow-y-auto transition-transform ${
+              isSideMenuOpen ? "translate-x-0" : "translate-x-full"
+            } bg-white dark:bg-gray-800`}
           >
             <div className="side-head-menu w-full p-4 z-10">
               <h5
@@ -116,6 +125,7 @@ const Header = () => {
               type="button"
               data-drawer-hide="drawer-navigation"
               className="text-gray-400 z-10 bg-transparent blk hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-4 end-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              onClick={closeSideMenu} // Close the side menu on click
             >
               <svg
                 aria-hidden="true"

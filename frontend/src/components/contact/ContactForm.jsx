@@ -73,8 +73,8 @@ const ContactForm = () => {
                             data-original="#000000"
                           />
                         </svg>
-                        <a href="" className="text-white text-sm ml-3">
-                          <strong>info@example.com</strong>
+                        <a href="mailto:darululoomdawa@gmail.com" className="text-white text-sm ml-3">
+                          <strong>darululoomdawa@gmail.com</strong>
                         </a>
                       </li>
                       <li className="flex items-center">
@@ -90,15 +90,15 @@ const ContactForm = () => {
                             data-original="#000000"
                           ></path>
                         </svg>
-                        <a href="" className="text-white text-sm ml-3">
-                          <strong>+158 996 888</strong>
+                        <a href="tel:04933 205249" className="text-white text-sm ml-3">
+                          <strong>04933 205249</strong>
                         </a>
                       </li>
                       <li className="flex items-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          width="16px"
-                          height="16px"
+                          width="30px"
+                          height="30px"
                           fill="#fff"
                           viewBox="0 0 368.16 368.16"
                         >
@@ -111,8 +111,8 @@ const ContactForm = () => {
                             data-original="#000000"
                           ></path>
                         </svg>
-                        <a href="" className="text-white text-sm ml-3">
-                          <strong>123 Street 256 House</strong>
+                        <a href="https://maps.app.goo.gl/TrSWAJU3js7BBPjB7" className="text-white text-sm ml-3">
+                          <strong>RUN BY: ASSASUL ISLAM SANGAM (REG: 274/74), THOOTHA, ANAMANGAD PO. PIN: 679357, MALAPPURAM DIST, KERALA.</strong>
                         </a>
                       </li>
                     </ul>
