@@ -13,18 +13,31 @@ const Header = () => {
   const closeSideMenu = () => {
     setIsSideMenuOpen(false);
     setShowDropdown(false);
+    document.body.style.overflow = ""; // Reset body overflow
   };
 
   const toggleDropdown = () => {
-    setShowDropdown((prevState) => !prevState); // Toggle the dropdown state
+    setShowDropdown((prevState) => !prevState);
   };
 
   const closeDropdown = () => {
-    setShowDropdown(false); // Function to explicitly close the dropdown
+    setShowDropdown(false);
   };
+
+  // Effect to handle body overflow
+  React.useEffect(() => {
+    if (isSideMenuOpen || showDropdown) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [isSideMenuOpen, showDropdown]);
 
   return (
     <div className="bg-white h-28 n-main items-center z-50">
+      {isSideMenuOpen && (
+        <div className="bg-[#000000b3] dark:bg-gray-900/80 overflow-hidden fixed inset-0 z-30"></div>
+      )}
       <div
         id="nav"
         className="navbar bg-white border-gray-200 dark:bg-gray-900 items-center"
