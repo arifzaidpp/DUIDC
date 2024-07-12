@@ -82,12 +82,12 @@ const LatestEvents = ({ home, events }) => {
                 </h3>
               </div>
               <div className="ev-heading-divider mb-2 -mt-2">
-                <span className="inline-block w-60 h-[3px] bg-red-800"></span>
+                <span className="inline-block w-60 h-[3px] bg-blue-800"></span>
               </div>
 
               <div className="ev-body py-10">
                 <div className="grid lg:grid-cols-2 gap-6">
-                {events.length > 0 && (
+                {events.length > 0 ?(
                     <div
                       className={`fade-in-section ${
                         isVisible ? "is-visible" : ""
@@ -124,7 +124,7 @@ const LatestEvents = ({ home, events }) => {
                         </a>
                         <figcaption className="absolute bottom-0 left-0 right-0 p-8 custom-gradient text-white transition duration-900 ease-in-out">
                           <div className="event-start-date mb-2">
-                            <span className="bg-red-800 px-2 py-1 text-base text-white font-semibold uppercase w-20 inline-block">
+                            <span className="bg-blue-800 px-2 py-1 text-base text-white font-semibold uppercase w-20 inline-block">
                               {formatEventDate(events[0].eventDate)}
                             </span>
                           </div>
@@ -141,7 +141,7 @@ const LatestEvents = ({ home, events }) => {
                         </figcaption>
                       </figure>
                     </div>
-                  )}
+                  ):(<div>No events are scheduled at the moment. Check back soon!</div>)}
 
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Render additional events if there are more than 1 */}
@@ -184,7 +184,7 @@ const LatestEvents = ({ home, events }) => {
                             </a>
                             <figcaption className="-mt-5 z-50 relative">
                               <div className="event-start-date mb-2">
-                                <span className="bg-red-800 px-2 py-1 pt-2 text-sm text-white font-semibold uppercase w-[4.5rem] inline-block">
+                                <span className="bg-blue-800 px-2 py-1 pt-2 text-sm text-white font-semibold uppercase w-[4.5rem] inline-block">
                                   {formatEventDate(event.eventDate)}
                                 </span>
                               </div>
@@ -209,7 +209,7 @@ const LatestEvents = ({ home, events }) => {
                     <a href="/events">
                       <button
                         type="button"
-                        className="bg-red-800 hover:bg-black text-white font-semibold text-base py-2.5 px-5 w-full rounded-none focus:outline-none"
+                        className="bg-blue-800 hover:bg-black text-white font-semibold text-base py-2.5 px-5 w-full rounded-none focus:outline-none"
                       >
                         View more events
                         <span className="button-icon ml-2">

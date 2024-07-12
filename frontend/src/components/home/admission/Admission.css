@@ -9,7 +9,7 @@
   content: "";
   width: 66px;
   height: 3px;
-  background: #ae152d;
+  background: #123575;
 }
 
 /* Animation */
@@ -139,7 +139,7 @@
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   text-transform: none;
-  background-color: #ae152d !important;
+  background-color: #123575 !important;
 }
 
 .admission-hero-btns .admission-red:hover {

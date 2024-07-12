@@ -117,7 +117,7 @@ const ContactForm = () => {
                       </li>
                     </ul>
                     <ul className="flex mt-12 space-x-4">
-                      <li className="bg-[#a91079] hover:bg-[#a91079e2] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+                      <li className="bg-[#123575] hover:bg-[#2a56a8] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                         <a href="">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +133,7 @@ const ContactForm = () => {
                           </svg>
                         </a>
                       </li>
-                      <li className="bg-[#a91079] hover:bg-[#a91079e2] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+                      <li className="bg-[#123575] hover:bg-[#2a56a8] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                         <a href="">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,7 @@ const ContactForm = () => {
                           </svg>
                         </a>
                       </li>
-                      <li className="bg-[#a91079] hover:bg-[#a91079e2] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+                      <li className="bg-[#123575] hover:bg-[#2a56a8] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                         <a href="">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -204,7 +204,7 @@ const ContactForm = () => {
                       ></textarea>
                       <button
                         type="submit"
-                        className="text-white bg-[#a91079] hover:bg-[#a91079e2] font-semibold rounded-md text-sm px-4 py-3 flex items-center justify-center w-full"
+                        className="text-white bg-[#123575] hover:bg-[#2a56a8] font-semibold rounded-md text-sm px-4 py-3 flex items-center justify-center w-full"
                         disabled={loading}
                       >
                         <svg

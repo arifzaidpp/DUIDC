@@ -50,7 +50,7 @@ const PastEvents = ({ events }) => {
               </div>
 
               <div className="ev-heading-divider mb-4 -mt-2">
-                <span className="inline-block w-40 h-[2px] bg-red-800"></span>
+                <span className="inline-block w-40 h-[2px] bg-blue-800"></span>
               </div>
               <div className="evLi-body">
                 <div className="grid lg:grid-cols-1 gap-6">

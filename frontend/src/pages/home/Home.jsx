@@ -91,7 +91,7 @@ const Home = () => {
                     </h3>
                   </div>
                   <div className="ev-heading-divider mb-2 -mt-2">
-                    <span className="inline-block w-60 h-[3px] bg-red-800"></span>
+                    <span className="inline-block w-60 h-[3px] bg-blue-800"></span>
                   </div>
 
                   <div className="ev-body py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

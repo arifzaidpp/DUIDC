@@ -5,7 +5,7 @@ const HeaderBottom = () => {
     return (
         <div
             className="navBot hidden lg:block dark:bg-gray-900 items-center text-center content-center  w-full z-20 top-0 start-0 border-gray-200 dark:border-gray-600"
-            style={{ backgroundColor: "#9d2235" }}
+            style={{ backgroundColor: "#123575" }}
         >
             <div className="max-w-fit text-center content-center items-center p-3 inline-flex">
                 <div

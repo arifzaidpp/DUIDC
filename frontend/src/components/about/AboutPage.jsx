@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AboutPage = () => {
+  const [activeTab, setActiveTab] = useState("nav-who-tab");
+
+  const handleTabClick = (tabId) => {
+    setActiveTab(tabId);
+  };
+
+  const getButtonStyle = (tabId) => {
+    return {
+      backgroundColor: activeTab === tabId ? "#123575" : "",
+      color: activeTab === tabId ? "white" : "",
+    };
+  };
   return (
     <>
       <section className="bg-gray-50 dark:bg-gray-900">
@@ -518,26 +530,30 @@ const AboutPage = () => {
                             role="tablist"
                           >
                             <button
-                              className="nav-link active"
+                              className="nav-link"
+                              style={getButtonStyle("nav-who-tab")}
                               id="nav-who-tab"
                               data-bs-toggle="tab"
                               data-bs-target="#nav-who"
                               type="button"
                               role="tab"
                               aria-controls="nav-who"
-                              aria-selected="true"
+                              aria-selected={activeTab === "nav-who-tab"}
+                              onClick={() => handleTabClick("nav-who-tab")}
                             >
                               Our Vision
                             </button>
                             <button
                               className="nav-link"
+                              style={getButtonStyle("nav-vision-tab")}
                               id="nav-vision-tab"
                               data-bs-toggle="tab"
                               data-bs-target="#nav-vision"
                               type="button"
                               role="tab"
                               aria-controls="nav-vision"
-                              aria-selected="false"
+                              aria-selected={activeTab === "nav-vision-tab"}
+                              onClick={() => handleTabClick("nav-vision-tab")}
                             >
                               Our Mission
                             </button>
@@ -551,8 +567,8 @@ const AboutPage = () => {
                             aria-labelledby="nav-who-tab"
                           >
                             <p>
-                            To be a leading educational institution commited to propagate Islam all over the world.
-
+                              To be a leading educational institution commited
+                              to propagate Islam all over the world.
                             </p>
                           </div>
                           <div
@@ -562,7 +578,10 @@ const AboutPage = () => {
                             aria-labelledby="nav-vision-tab"
                           >
                             <p>
-                            Ordaining a scholarship with high-quality Islamic education through Moral Training (Tarbiyah) and effective Teaching (Ta'lim) capable to propagate Islam by sophisticated means.
+                              Ordaining a scholarship with high-quality Islamic
+                              education through Moral Training (Tarbiyah) and
+                              effective Teaching (Ta'lim) capable to propagate
+                              Islam by sophisticated means.
                             </p>
                           </div>
                           <div

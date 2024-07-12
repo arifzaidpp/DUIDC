@@ -1,7 +1,7 @@
 @media (min-width: 1023px) {
   .head-item:hover {
       --tw-text-opacity: 1;
-      color: rgb(200 30 30 / var(--tw-text-opacity)) !important;
+      color: rgb(18 53 117 / var(--tw-text-opacity)) !important;
   }
   .n-main{
       padding-top: 0.5rem/* 8px */;
@@ -183,7 +183,7 @@ box-shadow: none; /* Optional: Remove any box shadow */
   text-align: center;
   letter-spacing: 0em;
   text-transform: none;
-  color: #ae152d;
+  color: #123575;
   font-size: 20px;
   box-sizing: inherit;
   -webkit-font-smoothing: antialiased;
@@ -201,7 +201,7 @@ box-shadow: none; /* Optional: Remove any box shadow */
 }
 
 .search-icon-btn{
-color: #ae152d;
+color: #123575;
 }
 
 

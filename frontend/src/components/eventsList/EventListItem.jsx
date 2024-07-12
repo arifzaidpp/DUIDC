@@ -77,7 +77,7 @@ const EventListItem = ({ event, openImagePopup }) => {
           </div>
         <figcaption className="-mt-5 text-black text-center relative z-40">
           <div className="eventList-start-date mb-2">
-            <span className="bg-red-800 px-2 py-1 pt-2 text-sm text-white font-semibold uppercase w-[4.5rem] inline-block">
+            <span className="bg-blue-800 px-2 py-1 pt-2 text-sm text-white font-semibold uppercase w-[4.5rem] inline-block">
               {formatEventDate(event.eventDate)}
             </span>
           </div>

@@ -98,19 +98,19 @@
 
 @media (max-width: 1023px) {
     .hero-text h1 {
-        font-size: 54px;
+        font-size: 44px;
     }
 }
 
 @media (min-width: 1023px) {
     .hero-text h1 {       
-        font-size: 72px;
+        font-size: 62px;
     }
 }
 
 @media (max-width: 767px) {
     .hero-text h1 {
-        font-size: 36px;
+        font-size: 33px;
     }
 }
 
@@ -130,7 +130,7 @@
     max-width: 670px;
   font-style: normal;
   font-variant: normal;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .hero-text mark{
@@ -191,7 +191,7 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     text-transform: none;
-    background-color: #ae152d !important;
+    background-color: #123575 !important;
 }
 
 .hero-btns .red:hover{
@@ -216,7 +216,7 @@
     padding-right: 2rem;
     text-transform: none;
     margin-left: 1rem;
-    color: #ae152d;
+    color: #123575;
     background-color: #ffffff !important;
 }
 

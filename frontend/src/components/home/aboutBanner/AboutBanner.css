@@ -192,7 +192,7 @@
     content: '';
     width: 66px;
     height: 3px;
-    background: #ae152d;
+    background: #123575;
 }
 
 .description-wrap {
@@ -231,7 +231,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    border: 3px solid #ae152d;
+    border: 3px solid #123575;
     border-radius: inherit;
     opacity: 1;
     z-index: 2;
@@ -252,7 +252,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    border: 3px solid #ae152d;
+    border: 3px solid #123575;
     border-radius: inherit;
     opacity: 1;
     z-index: 2;
@@ -288,7 +288,7 @@
     display: inline-block;
     width: 320px;
     max-width: 90%;
-    background: #ae152d;
+    background: #123575;
     padding: 16px 20px;
     text-align: center;
 }
