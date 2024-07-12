@@ -20,7 +20,9 @@
 .translate-x-0 {
   transform: translateX(0);
 }
-
+.hidden {
+  display: none;
+}
 
 
 .head-item{

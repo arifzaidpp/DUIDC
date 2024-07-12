@@ -4,13 +4,22 @@ import "../../js/Header.js";
 
 const Header = () => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleSideMenu = () => {
     setIsSideMenuOpen(!isSideMenuOpen);
   };
 
   const closeSideMenu = () => {
-    setIsSideMenuOpen(false); // Close the side menu
+    setIsSideMenuOpen(false);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
   };
   return (
     <div className="bg-white h-28 n-main items-center z-50">
@@ -284,86 +293,89 @@ const Header = () => {
                 </li>
 
                 <li>
-                  <a className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg
-                      className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      id="browser"
-                    >
-                      <path d="M18 2H2C.9 2 0 2.9 0 4v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM4.5 3.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm-2.75.75a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0zM18 16H2V7h16v9zm0-11H6V4h12.019L18 5z"></path>
-                    </svg>
-                    <button
-                      id="dropdownTopButton"
-                      data-dropdown-toggle="dropdownTop"
-                      data-dropdown-placement="top"
-                      className="me-3 md:mb-0 text-white drop-pages text-center inline-flex items-center "
-                      type="button"
-                    >
-                      Pages{" "}
-                      <svg
-                        className="w-2.5 h-2.5 ms-3"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 10 6"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M9 5 5 1 1 5"
-                        />
-                      </svg>
-                    </button>
-                  </a>
-                </li>
+          <a className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <svg
+              className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              id="browser"
+            >
+              <path d="M18 2H2C.9 2 0 2.9 0 4v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM4.5 3.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm-2.75.75a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0zM18 16H2V7h16v9zm0-11H6V4h12.019L18 5z"></path>
+            </svg>
+            <button
+              id="dropdownTopButton"
+              className="me-3 md:mb-0 text-white drop-pages text-center inline-flex items-center"
+              type="button"
+              onClick={toggleDropdown}
+            >
+              Pages
+              <svg
+                className="w-2.5 h-2.5 ms-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 5 5 1 1 5"
+                />
+              </svg>
+            </button>
+          </a>
+        </li>
 
-                <div
-                  id="dropdownTop"
-                  className="z-10 sm-lst hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-                >
-                  <ul
-                    className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                    aria-labelledby="dropdownTopButton"
-                  >
-                    <li>
-                      <a
-                        href="/about"
-                        className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/contact"
-                        className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Contact
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Donate
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/events"
-                        className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Events
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+        <div
+          id="dropdownTop"
+          className={`z-10 sm-lst ${isDropdownOpen ? "" : "hidden"} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
+        >
+          <ul
+            className="py-2 text-sm text-gray-700 dark:text-gray-200"
+            aria-labelledby="dropdownTopButton"
+          >
+            <li>
+              <a
+                href="/about"
+                className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
+                onClick={closeDropdown}
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contact"
+                className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
+                onClick={closeDropdown}
+              >
+                Contact
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
+                onClick={closeDropdown}
+              >
+                Donate
+              </a>
+            </li>
+            <li>
+              <a
+                href="/events"
+                className="block px-4 py-2 hover:bg-gray-100 t-b dark:hover:bg-gray-600 dark:hover:text-white"
+                onClick={closeDropdown}
+              >
+                Events
+              </a>
+            </li>
+          </ul>
+        </div>
               </ul>
             </div>
           </div>
