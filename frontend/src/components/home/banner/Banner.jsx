@@ -36,7 +36,7 @@ const Banner = () => {
               <a href="/contact">
                 <button
                   type="button"
-                  className="white rounded-none p-5 focus:outline-none text-white font-medium text-sm px-5 py-2.5 me-2 mb-2"
+                  className="white rounded-none p-5 focus:outline-none ml-0 sm:ml-4 text-white font-medium text-sm px-5 py-2.5 me-2 mb-2"
                 >
                   Contact Us
                 </button>
